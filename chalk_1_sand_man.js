@@ -1,6 +1,6 @@
 /*
- * 제작자 : 초크(amato17) - MCPE Korea
- * 버젼 : 1.4
+ * 제작자 : 초크(amato17) - MCPE Korea - 1
+ * 버젼 : 1.3
  */
  
 function useItem(x,y,z,itemId,blockId)
