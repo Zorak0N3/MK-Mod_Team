@@ -1,4 +1,8 @@
-// PITFALL SCRIPT BY CHALK VER 1.3 FOR MCPEKOREA - 4
+// PITFALL SCRIPT 
+// BY CHALK 
+// VER 1.3.0 
+// FOR MCPEKOREA - 4
+
 function modTick()
 {
     sx = getPlayerX();
