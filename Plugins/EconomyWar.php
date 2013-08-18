@@ -193,7 +193,7 @@ class German{
   }
 }
 
-clas United{
+class United{
   public function __construct($username){
     $this->username = $username;
     $this->server = ServerAPI::request();
