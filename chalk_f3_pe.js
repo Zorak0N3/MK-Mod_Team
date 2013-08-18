@@ -1,5 +1,5 @@
 /* 제작자 : 초록크리퍼(amato17) - MCPE Korea
- * 버젼 : 1.4
+ * 버젼 : 1.3
  */
 
 function useItem(x, y, z, itemId, blockId) 
