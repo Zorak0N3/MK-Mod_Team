@@ -14,7 +14,7 @@ function useItem(x, y, z, item, block)
 	if(item == 292)
 	{
 		saveItemId = block;
-		print("¾ÆÀÌÅÛ ID : "+block);
+		print("ì•„ì´í…œ ID : "+block);
 		preventDefault();
 	}
 	
@@ -26,7 +26,7 @@ function useItem(x, y, z, item, block)
 			selection1[0] = Math.round(x);
 			selection1[1] = Math.round(y);
 			selection1[2] = Math.round(z);
-			print("Ã¹¹øÂ° ¼±ÅÃ");
+			print("ì²«ë²ˆì§¸ ì„ íƒ");
 		}
 		else if(!second)
 		{
@@ -34,13 +34,13 @@ function useItem(x, y, z, item, block)
 			selection2[0] = Math.round(x);
 			selection2[1] = Math.round(y);
 			selection2[2] = Math.round(z);
-			print("µÎ¹øÂ° ¼±ÅÃ");
+			print("ë‘ë²ˆì§¸ ì„ íƒ");
 		}
 		else
 		{
 			first = false;
 			second = false;
-			print("ÃÊ±âÈ­ ¿Ï·á");
+			print("ì´ˆê¸°í™” ì™„ë£Œ");
 		}
 	}
 	
@@ -56,7 +56,7 @@ function useItem(x, y, z, item, block)
 			}
 			else
 			{
-				clientMessage("Set : ¼±ÅÃÇÑ Áö¿ªÀ» "+block+"ºí·°À¸·Î º¯°æ ÇÏ½Ã°Ú½À´Ï±î?");
+				clientMessage("Set : ì„ íƒí•œ ì§€ì—­ì„ "+block+"ë¸”ëŸ­ìœ¼ë¡œ ë³€ê²½ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 				set = true;
 			}
 			preventDefault();
@@ -72,7 +72,7 @@ function useItem(x, y, z, item, block)
 			}
 			else
 			{
-				clientMessage("Replace : ¼±ÅÃÇÑ Áö¿ª¿¡¼­ "+saveItemId+"ºí·°À» "+block+"ºí·°À¸·Î º¯°æ ÇÏ½Ã°Ú½À´Ï±î?");
+				clientMessage("Replace : ì„ íƒí•œ ì§€ì—­ì—ì„œ "+saveItemId+"ë¸”ëŸ­ì„ "+block+"ë¸”ëŸ­ìœ¼ë¡œ ë³€ê²½ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 				replace = true;
 			}
 			preventDefault();
