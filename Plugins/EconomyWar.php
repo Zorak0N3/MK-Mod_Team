@@ -48,6 +48,12 @@ class EconomyWar implements Plugin{
    $cmd = array(
 
    );
+   foreach($wcmd as $w){
+     $this->api->ban->cmdWhitelist($w);
+   }
+   foreach($cmd as $c => $h){
+     $this->api->console->register($c, $h, array($this, "commandHandler"));
+   }
 	}
  public function __destruct(){}
  public function handle(&$data, $event){
@@ -71,7 +77,7 @@ class EconomyWar implements Plugin{
         "username" => $data->username,
       ));*/
       if($this->team[$data->ip] instanceof United and $team == "german" or $this->team[$data->ip] instanceof German and $team == "united"){
-        $data->close("cannot change the team");
+        $data->close("changed team");
         break;      
       }
       $team == "united" ? $this->team[$data->ip] = new United($data->username) : $this->team[$data->ip] = new German($data->username);
@@ -94,8 +100,53 @@ class EconomyWar implements Plugin{
       break;
     }
  }
+ public function commandHandler($cmd, $param, $issuer, $NotInUse){
+  $output = "[EconomyWar] ";
+  switch($cmd){
+   case "missile":
+   $sub = array_shift($param);
+   switch($sub){
+    case "buy":
+    $power = array_shift($param);
+    $error = array_shift($param);
+    if(trim($power) == "" or trim($error) == ""){
+     $output .= "Usage : /missile buy <power> <error>";
+      break 2;
+    }
+    foreach($this->confirm as $data){
+     if($issuer->username == $data){
+      $output .= "Please confirm before one.";
+      break 3;
+     }
+    }
+    $this->confirm[] = array(
+     $power,
+     $error,
+     $issuer->username   
+    );
+    $output .= "Confirm buying? Price : ".$power * ((1000 - $error * 10))."\$.";
+    break;
+    case "confirm":
+    foreach($this->confirm as $key => $data){
+     if($issuer->username == $data[2]){
+      $price = $power * (1000 - ($error * 10));
+      if($this->money[$this->team[$issuer->ip]] < $price){
+        $output .= "Your team does not have money for buy.";
+        break;
+      } 
+      $this->missile[] = new Missile($this->team[$issuer->ip] instanceof United ? "United" : "German", $data[1], $data[0]);
+      unset($this->confirm[$key]);
+      $output .= "Has been confirmed. Bought missile for ".$power * (1000 - ($error * 10))."\$.";
+      $this->money[$this->team[$issuer->ip]] -= $price;
+     }
+    }
+    break;
+   }
+   break;
+  }
+  return $output;
+ }
 }
-
 // Arms for the war
 
 class Flight{
@@ -142,24 +193,24 @@ class Flight{
 }
 
 class Missile{
-  public function __construct($team, $error, $power, $enemyForce){
+  public function __construct($team, $error, $power){
     $this->error = (int)$error;
     $this->power = (int)$power;
     $this->team = $team;
-    $this->data = array(
+  /*  $this->data = array(
       "x" => $enemyForce["x"],
       "y" => $enemyForce["y"],
       "z" => $enemyForce["z"],
       "level" => $enemyForce["level"],
-    );
+    );*/
     $this->server = ServerAPI::request();
   }
-  public function blast($x = $this->data["x"], $y = $this->data["y"], $z = $this->data["z"], $level = $this->server->api->level->get($this->data["level"])){
+ /* public function blast($x = $this->data["x"], $y = $this->data["y"], $z = $this->data["z"], $level = $this->server->api->level->get($this->data["level"])){
     if($this->server->api->level->get($level) == false){
       $level = $this->server->api->level->get($this->server->api->getProperty("level-name"));
     }
     $this->explosion($x, $y, $z, $level);
-  }
+  }*/
   public function explosion($x, $y, $z, $level){
     $error = rand(0, $this->error);
     $x += $error;
