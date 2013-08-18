@@ -1,7 +1,6 @@
-ModPE_Scripts
+공식 모드팀
 =============
-
-ModPE의 스크립트 입니다.
+MCPEKOREA 모드팀
 
 
 모드팀 인원:
