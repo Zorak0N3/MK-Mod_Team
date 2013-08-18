@@ -1,4 +1,4 @@
-/* 제작자 : 초록크리퍼(amato17) - MCPE Korea
+/* 제작자 : 초록크리퍼(amato17) - MCPE Korea - 2
  * 버젼 : 1.3
  */
 
