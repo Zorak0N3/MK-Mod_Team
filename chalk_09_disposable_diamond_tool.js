@@ -1,6 +1,6 @@
 // 초크의 9번째 스크립트
 // 일회용 다이아몬드 도구
-// 스크립트 버젼 : 1.3.0
+// 스크립트 버젼 : 1.3.1
 // chalk-disposable-diamond-tool.js
 
 function useItem( x , y , z , iID , bID )
