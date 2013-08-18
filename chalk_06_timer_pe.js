@@ -1,6 +1,7 @@
-// Timer_PE v1.3.8
+// Timer_PE v1.3.9
 // Script By Chalk
 // For MCPE Korea
+// 6th
 
 var tick = 0;
 var tuto = 0;
