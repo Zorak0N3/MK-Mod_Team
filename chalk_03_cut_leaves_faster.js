@@ -1,5 +1,5 @@
 // 초크의 3번째 스크립트 
-// ver 1.3
+// ver 1.3.0
 // cut leaves faster script
 
 function useItem(x,y,z,itemId,blockId)
