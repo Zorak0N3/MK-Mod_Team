@@ -1,4 +1,4 @@
-// Timer_PE v3.8
+// Timer_PE v1.3.8
 // Script By Chalk
 // For MCPE Korea
 
