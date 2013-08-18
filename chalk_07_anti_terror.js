@@ -1,4 +1,5 @@
-// Anti-Terror Script v1.5
+// Anti-Terror Script 
+// v1.3.5
 // By CHALK ( amato17 ) - 7th
 // For MCPE Korea < II > ~
 
