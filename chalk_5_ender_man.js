@@ -1,6 +1,6 @@
 // EnderMan Script 
 // By Chalk 
-// Ver 1.4
+// Ver 1.3
 // For MCPE Korea
 
 var pl = null;
