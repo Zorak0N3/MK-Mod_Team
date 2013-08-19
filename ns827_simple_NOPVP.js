@@ -1,4 +1,4 @@
-//SCRIPT BY NS827@MCPEKOREA
+//SCRIPT BY ns827@Mod Team
 
 function attackHook(attacker, victim)
 {
