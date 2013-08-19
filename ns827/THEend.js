@@ -3,6 +3,8 @@ var onoff = false;
 var hitcount = 0;
 var targetblock;
 var carried;
+var counter = 0;
+var counter2 = 0;
 function attackHook(attacker, victim){
 
 hitcount++;
@@ -30,4 +32,22 @@ onoff = true;
 }
 
 
+}
+
+
+function modTick(){
+  
+  if(!(onoff)){
+    setNight(isNight);
+    while(counter2 < 256){
+    while(counter < 256){
+      setTile(counter, 127, counter2, 1);
+      counter++;
+    }
+    counter = 0;
+    counter2++;
+    )
+    counter2 = 0;
+    
+  }
 }
