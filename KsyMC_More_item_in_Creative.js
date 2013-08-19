@@ -41,14 +41,21 @@ function procCmd(cmd)
 {
 	var arg = cmd.split(" ");
 	
-	if(arg == "setlava")
-		LAVA = getCarriedItem();
-	else if(arg == "setwater")
-		WATER = getCarriedItem();
-	else if(arg == "setfas")
-		FLINT_AND_STEEL = getCarriedItem();
-	else if(arg == "setcobweb")
-		COBWEB = getCarriedItem();
+	switch(arg[0])
+	{
+		case "setlava":
+			LAVA = getCarriedItem();
+			break;
+		case "setwater":
+			WATER = getCarriedItem();
+			break;
+		case "setfas":
+			FLINT_AND_STEEL = getCarriedItem();
+			break;
+		case "setcobweb":
+			COBWEB = getCarriedItem();
+			break;
+	}
 }
  
 function getSide(x, y, z, side)
