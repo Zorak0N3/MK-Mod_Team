@@ -3,6 +3,7 @@ var gY;
 var gZ;
 var direction;
 
+
 var active = 0;
 var tickCurrent = 0;
 var tickDuration = 2.5;

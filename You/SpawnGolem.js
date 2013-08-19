@@ -1,6 +1,7 @@
 // Snow Golem mod by kacperski1
 // version 0.3a
 
+
 var gX;
 var gY;
 var gZ;
@@ -8,7 +9,7 @@ var direction;
 
 var active = 0;
 var tickCurrent = 0;
-var tickDuration = 500;
+var tickDuration = 50;
 
 var activationItem = 344;
 var actBlock1 = 103;
