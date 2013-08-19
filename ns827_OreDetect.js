@@ -2,7 +2,7 @@
 
 
 print("광물 탐지기를 시작합니다");
-print("Made by ns827_Mod Team);
+print("Made by ns827_Mod Team");
 
 
 var ores = 0;
