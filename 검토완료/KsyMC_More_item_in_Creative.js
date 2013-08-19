@@ -53,7 +53,7 @@ function procCmd(cmd)
 			FLINT_AND_STEEL = getCarriedItem();
 			break;
 		case "setcobweb":
-			COBWAB = getCarriedItem();
+			COBWEB = getCarriedItem();
 			break;
 	}
 }
