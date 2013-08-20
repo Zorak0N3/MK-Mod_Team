@@ -48,8 +48,7 @@ function procCmd(cmd){
 				break;
 			}
 			
-			W_copy();
-			
+			clientMessage(W_copy() + "개의 블록이 복사되었습니다.");
 			break;
 		case "/paste":
 			if(clipboard.length == 0){
@@ -57,8 +56,7 @@ function procCmd(cmd){
 				break;
 			}
 			
-			W_paste([getPlayerX(), getPlayerY(), getPlayerZ()]);
-			
+			clientMessage(W_paste(getPlayerX(), getPlayerY(), getPlayerZ()) + "개의 블록이 수정되었습니다.");
 			break;
 		case "/undo":
 			
@@ -140,17 +138,10 @@ function W_copy(){
 	return count;
 }
 
-function W_paste(pos){
-	var startX = Math.min(selection1[0], selection2[0]);
-	var endX = Math.max(selection1[0], selection2[0]);
-	var startY = Math.min(selection1[1], selection2[1]);
-	var endY = Math.max(selection1[1], selection2[1]);
-	var startZ = Math.min(selection1[2], selection2[2]);
-	var endZ = Math.max(selection1[2], selection2[2]);
-	
-	clipboard[0][0] += pos[0] - 0.5;
-	clipboard[0][1] += pos[1];
-	clipboard[0][2] += pos[2] - 0.5;
+function W_paste(playerX, playerY, playerZ){
+	clipboard[0][0] += playerX - 0.5;
+	clipboard[0][1] += playerY;
+	clipboard[0][2] += playerZ - 0.5;
 	
 	var count = 0;
 	
