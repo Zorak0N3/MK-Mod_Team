@@ -12,7 +12,7 @@ var switcher = false;
 function newLevel(){
 switcher = false;
 print("아직 디버그 모드는 활성화되어 있지 않습니다.");
-print("수동으로 활성화시키십시오.);
+print("수동으로 활성화시키십시오.");
 
 }
 function useItem(x, y, z, itemId, blockId){
