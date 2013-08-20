@@ -15,7 +15,7 @@ function procCmd(cmd){
 	switch(arg[0])
 	{
 		case "/set":
-			if(!arg[1] === undefined){
+			if(!arg[1].length){
 				clientMessage("사용법 : //set [아이템 ID]");
 			}
 			
@@ -28,7 +28,7 @@ function procCmd(cmd){
 			clientMessage(W_set(block) + "개의 블록이 수정되었습니다.");
 			break;
 		case "/replace":
-			if(!arg[1] === undefined || !arg[2] === undefined){
+			if(!arg[1].length || !arg[2].length){
 				clientMessage("사용법 : //replace [교체할 ID] [교체될 ID]");
 			}
 			
