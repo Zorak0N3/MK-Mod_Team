@@ -12,7 +12,7 @@ var saveItemId = 0;
 function procCmd(cmd){
 	arg = cmd.toLowerCase().split(" ");
 	
-	switch(arg)
+	switch(arg[0])
 	{
 		case "/set":
 			if(!arg[1].length){
