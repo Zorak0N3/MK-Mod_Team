@@ -4,10 +4,7 @@ var selection2 = [0, 0, 0];
 var select_first = false;
 var select_second = false;
 
-var set = false;
-var replace = false;
-
-var saveItemId = 0;
+var clipboard = new Array();
 
 function procCmd(cmd){
 	arg = cmd.toLowerCase().split(" ");
@@ -45,16 +42,31 @@ function procCmd(cmd){
 			
 			clientMessage(W_replace(block1, block2) + "개의 블록이 수정되었습니다.");
 			break;
+		case "/copy":
+			if(!select_first || !select_second){
+				clientMessage("선택된 영역이 없습니다.");
+				break;
+			}
+			
+			W_copy();
+			
+			break;
+		case "/paste":
+			if(clipboard.length == 0){
+				clientMessage("저장된 영역이 없습니다.");
+				break;
+			}
+			
+			W_paste([getPlayerX(), getPlayerY(), getPlayerZ()]);
+			
+			break;
+		case "/undo":
+			
+			break;
 	}
 }
 
 function useItem(x, y, z, item, block){
-	if(item == 292){
-		saveItemId = block;
-		clientMessage("아이템 ID : "+block);
-		preventDefault();
-	}
-	
 	if(item == 267){
 		if(!select_first){
 			select_first = true;
@@ -101,6 +113,59 @@ function W_set(block){
 	return count;
 }
 
+function W_copy(){
+	var startX = Math.min(selection1[0], selection2[0]);
+	var endX = Math.max(selection1[0], selection2[0]);
+	var startY = Math.min(selection1[1], selection2[1]);
+	var endY = Math.max(selection1[1], selection2[1]);
+	var startZ = Math.min(selection1[2], selection2[2]);
+	var endZ = Math.max(selection1[2], selection2[2]);
+	
+	clipboard[0] = [startX - getPlayerX() - 0.5, startY - getPlayerY() - 1, startZ - getPlayerZ() - 0.5];
+	clipboard[1] = new Array();
+	
+	var count = 0;
+	
+	for(var x = startX; x <= endX; x++){
+		clipboard[1][x - startX] = new Array();
+		for(var y = startY; y <= endY; y++){
+			clipboard[1][x - startX][y - startY] = new Array();
+			for(var z = startZ; z <= endZ; z++){
+				clipboard[1][x - startX][y - startY][z - startZ] = getTile(x, y, z);
+				count++;
+			}
+		}
+	}
+	
+	return count;
+}
+
+function W_paste(pos){
+	var startX = Math.min(selection1[0], selection2[0]);
+	var endX = Math.max(selection1[0], selection2[0]);
+	var startY = Math.min(selection1[1], selection2[1]);
+	var endY = Math.max(selection1[1], selection2[1]);
+	var startZ = Math.min(selection1[2], selection2[2]);
+	var endZ = Math.max(selection1[2], selection2[2]);
+	
+	clipboard[0][0] += pos[0] - 0.5;
+	clipboard[0][1] += pos[1];
+	clipboard[0][2] += pos[2] - 0.5;
+	
+	var count = 0;
+	
+	for(var x in clipboard[1]){
+		for(var y in x){
+			for(var z in y){
+				setTile(x + Math.round(clipboard[0][0]), y + Math.round(clipboard[0][1), z + Math.round(clipboard[0][2]), clipboard[1][x][y][z]);
+				count++;
+			}
+		}
+	}
+	
+	return count;
+}
+
 function W_replace(block1, block2){
 	var startX = Math.min(selection1[0], selection2[0]);
 	var endX = Math.max(selection1[0], selection2[0]);
@@ -108,6 +173,8 @@ function W_replace(block1, block2){
 	var endY = Math.max(selection1[1], selection2[1]);
 	var startZ = Math.min(selection1[2], selection2[2]);
 	var endZ = Math.max(selection1[2], selection2[2]);
+	
+	var count = 0;
 	
 	for(var x = startX; x <= endX; x++){
 		for(var y = startY; y <= endY; y++){
