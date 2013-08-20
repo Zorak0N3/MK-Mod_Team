@@ -16,30 +16,30 @@ function procCmd(cmd){
 	{
 		case "/set":
 			if(!arg[1].length){
-				chatMessage("사용법 : //set [아이템 ID]");
+				clientMessage("사용법 : //set [아이템 ID]");
 			}
 			
 			var block = new Number(arg[1]);
 			
 			if(!select_first || !select_second){
-				chatMessage("선택된 영역이 없습니다.");
+				clientMessage("선택된 영역이 없습니다.");
 			}
 			
-			chatMessage(W_set(block) + "개의 블록이 수정되었습니다.");
+			clientMessage(W_set(block) + "개의 블록이 수정되었습니다.");
 			break;
 		case "/replace":
 			if(!arg[1].length || !arg[2].length){
-				chatMessage("사용법 : //replace [교체할 ID] [교체될 ID]");
+				clientMessage("사용법 : //replace [교체할 ID] [교체될 ID]");
 			}
 			
 			var block1 = new Number(arg[1]);
 			var block2 = new Number(arg[2]);
 			
 			if(!select_first || !select_second){
-				chatMessage("선택된 영역이 없습니다.");
+				clientMessage("선택된 영역이 없습니다.");
 			}
 			
-			chatMessage(W_replace(block1, block2) + "개의 블록이 수정되었습니다.");
+			clientMessage(W_replace(block1, block2) + "개의 블록이 수정되었습니다.");
 			break;
 	}
 }
@@ -47,7 +47,7 @@ function procCmd(cmd){
 function useItem(x, y, z, item, block){
 	if(item == 292){
 		saveItemId = block;
-		chatMessage("아이템 ID : "+block);
+		clientMessage("아이템 ID : "+block);
 		preventDefault();
 	}
 	
@@ -58,19 +58,19 @@ function useItem(x, y, z, item, block){
 			selection1[1] = Math.round(y);
 			selection1[2] = Math.round(z);
 			
-			chatMessage("첫번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
+			clientMessage("첫번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
 		}else if(!select_second){
 			select_second = true;
 			selection2[0] = Math.round(x);
 			selection2[1] = Math.round(y);
 			selection2[2] = Math.round(z);
 			
-			chatMessage("두번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
+			clientMessage("두번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
 		}else{
 			select_first = false;
 			second = false;
 			
-			chatMessage("선택 지점이 초기화 되었습니다.\n다시 선택해 주세요.");
+			clientMessage("선택 지점이 초기화 되었습니다.\n다시 선택해 주세요.");
 		}
 	}
 }
