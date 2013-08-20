@@ -1,8 +1,14 @@
 //버그: 사용 불가(오류 발생...)
 
 
-print("광물 탐지기를 시작합니다");
+print("광물 탐지기를 설치합니다. 이용해 주셔서 감사합니다.");
 print("Made by ns827_Mod Team");
+
+function newLevel(){
+  print("광물 탐지기를 시작합니다. 이용해 주셔서 감사합니다.");
+  print("Made by ns827_Mod Team");
+  
+}
 
 
 var ores = 0;
