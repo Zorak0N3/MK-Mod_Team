@@ -157,7 +157,7 @@ function W_paste(pos){
 	for(var x in clipboard[1]){
 		for(var y in x){
 			for(var z in y){
-				setTile(x + Math.round(clipboard[0][0]), y + Math.round(clipboard[0][1), z + Math.round(clipboard[0][2]), clipboard[1][x][y][z]);
+				setTile(x + Math.round(clipboard[0][0]), y + Math.round(clipboard[0][1]), z + Math.round(clipboard[0][2]), clipboard[1][x][y][z]);
 				count++;
 			}
 		}
