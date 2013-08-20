@@ -1,4 +1,4 @@
-// LTE NUTT Script - 11th Script
+// LTE NUTT Script - 11th Script - test
 // Made By Chalk(amato17) - MCPE Korea Mod Team
 // Idea By SK Telecom - LTE NUTT APP
 // Current Version = 1.3.0
