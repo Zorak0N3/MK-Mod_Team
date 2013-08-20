@@ -37,6 +37,9 @@ var savb;
 var tarY;
 var lasY;
 var bet;
+var tmpx;
+var tmpy;
+var tmpz;
 function newLevel(){
 
 print("램프 스크립트 by Mod Team_ns827");
@@ -49,7 +52,9 @@ print("램프 스크립트 by Mod Team_ns827");
 function modTick(){
 gc = getCarriedItem();
 
-lasY = lasty - 2;
+tmpx = nowx;
+tmpy = nowy;
+tmpz = nowz;
 nowx = getPlayerX();
 nowy = getPlayerY();
 nowz = getPlayerZ();
@@ -57,24 +62,22 @@ tarY = nowy - 2;
 
 
 bet = getTile(nowx, tarY, nowz);
-if(bet != 0 && gc == 50){
+if(bet != 0 && bet != 89 && gc == 50){
 savb = getTile(nowx, tarY, nowz);
 setTile(255, 127, 255, savb);
 setTile(nowx, tarY, nowz, 89);
 }
 
-if(nowx - lastx >= 1 || nowy - lasty >= 1 || nowz - lastz >= 1 || nowx - lastx <= 1|| nowy - lasty <= 1 || nowz - lastz <= 1 ){
-loadsb();
-}
-}
+if(nowx - tmpx > 1 || nowy - tmpy > 1 || nowz - tmpz > 1 || nowx - tmpx < 1|| nowy - tmpy < 1 || nowz - tmpz < 1 ){
 
-function loadsb(){
+lastx = tmpx;
+lasty = tmpy;
+lastz = tmpz;
+lasY = lasty - 2;
 
 savb = getTile(255, 127, 255);
 setTile(lastx, lasY, lastz, savb);
-
+}
 }
 
-function savesb(){
 
-}
