@@ -17,12 +17,14 @@ function procCmd(cmd){
 		case "/set":
 			if(arg[1] === undefined){
 				clientMessage("사용법 : //set [아이템 ID]");
+				break;
 			}
 			
 			var block = new Number(arg[1]);
 			
 			if(!select_first || !select_second){
 				clientMessage("선택된 영역이 없습니다.");
+				break;
 			}
 			
 			clientMessage(W_set(block) + "개의 블록이 수정되었습니다.");
@@ -30,6 +32,7 @@ function procCmd(cmd){
 		case "/replace":
 			if(arg[1] === undefined || arg[2] === undefined){
 				clientMessage("사용법 : //replace [교체할 ID] [교체될 ID]");
+				break;
 			}
 			
 			var block1 = new Number(arg[1]);
@@ -37,6 +40,7 @@ function procCmd(cmd){
 			
 			if(!select_first || !select_second){
 				clientMessage("선택된 영역이 없습니다.");
+				break;
 			}
 			
 			clientMessage(W_replace(block1, block2) + "개의 블록이 수정되었습니다.");
@@ -68,7 +72,7 @@ function useItem(x, y, z, item, block){
 			clientMessage("두번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
 		}else{
 			select_first = false;
-			second = false;
+			select_second = false;
 			
 			clientMessage("선택 지점이 초기화 되었습니다.\n다시 선택해 주세요.");
 		}
