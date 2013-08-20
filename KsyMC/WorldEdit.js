@@ -146,8 +146,8 @@ function W_paste(playerX, playerY, playerZ){
 	var count = 0;
 	
 	for(var x in clipboard[1]){
-		for(var y in x){
-			for(var z in y){
+		for(var y in clipboard[1][x]){
+			for(var z in clipboard[1][y]){
 				setTile(x + Math.round(clipboard[0][0]), y + Math.round(clipboard[0][1]), z + Math.round(clipboard[0][2]), clipboard[1][x][y][z]);
 				count++;
 			}
