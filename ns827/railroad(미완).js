@@ -12,5 +12,23 @@ yy = y;
 zz = z;
 ub = blockId;
 
-if(blockId == 
+if(blockId == 49){
+  
+  railroad();
+  
+}
+}
+
+
+function railroad(){
+  
+  
+    
+railroad();
+}
+
+function chkrail(x, y, z){
+ 
+ 
+  
 }
