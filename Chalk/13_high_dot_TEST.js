@@ -18,6 +18,11 @@ function useItem( x , y , z , i , b )
 		{
 			setVelY( getPlayerEnt() , byVal );
 		}
+		else
+		{
+			print("날지 않은 상태에서 사용하면 위험합니다");
+			
+		}
 	}
 	else if( i == downItem )
 	{
