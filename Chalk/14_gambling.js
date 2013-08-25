@@ -21,15 +21,15 @@ function useItem( x , y , z , i , b )
 			{
 				give( i );
 			}
-			else if( i == iron && rand( 30 ) )
+			else if( i == iron && rand( 25 ) )
 			{
 				give( i );
 			}
-			else if( i == gold && rand( 50 ) )
+			else if( i == gold && rand( 40 ) )
 			{
 				give( i );
 			}
-			else if( i == diam && rand( 70 ) )
+			else if( i == diam && rand( 55 ) )
 			{
 				give( i );
 			}
