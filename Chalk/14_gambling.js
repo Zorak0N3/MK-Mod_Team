@@ -43,7 +43,7 @@ function useItem( x , y , z , i , b )
 		{
 			print("어허! 돈 없으면 가라!");
 		}
-	}
+	
 }
 
 function rand( per )
