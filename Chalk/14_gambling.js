@@ -64,6 +64,6 @@ function rand( per )
 
 function give( sucItem )
 {	
-	addItemInventory( sucItem , 9 );
+	addItemInventory( sucItem , 4 );
 	print("판돈은 내가 싹 쓸어간다~");
 }
