@@ -1,6 +1,6 @@
 // Bouncy Bed
 // By Chalk
-// Current Version : 0.9
+// Current Version : 1.0
 
 var val = 0.1;
 
@@ -10,12 +10,16 @@ function newLevel()
 	
 }
 
+function useItem( x, y, z, i, b )
+{
+	val = 0.1;
+}
+
 function modTick()
 {
-	if( getTile( Player.getX() , Player.getY() - 2 , Player.getZ() ) == 26 )
+	if( getTile( getPlayerX() , getPlayerY() - 2 , getPlayerZ() ) == 26 )
 	{
-			Entity.setVelY( Player.getEntity() , val );
+			setVelY( getPlayerEnt() , val );
 			val += 0.1;
-
 	}
 }
