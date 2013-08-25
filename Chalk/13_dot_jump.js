@@ -6,7 +6,7 @@ var downItem = 292;
 
 function newLevel()
 {
-	print("[highdot] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /highdot 이동할 거리");
+	print("[DotJump] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /dj 이동할 거리");
 	print("이동할 거리 : " + byVal + "칸");
 }
 
@@ -34,7 +34,7 @@ function procCmd( cmd )
 {
 	cutcmd = cmd.split( ' ' );
 	
-	if( cutcmd[0] == "highdot" )
+	if( cutcmd[0] == "dj" )
 	{
 		if( !(isNaN( cutcmd[1] ) ) )
 		{
@@ -45,7 +45,7 @@ function procCmd( cmd )
 		{
 			if( cutcmd[1] == "help" )
 			{
-				print("철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /highdot 이동할 거리");
+				print("철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /dj 이동할 거리");
 			}
 			else
 			{
