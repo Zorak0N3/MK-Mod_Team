@@ -43,14 +43,7 @@ function procCmd( cmd )
 		}
 		else
 		{
-			if( cutcmd[1] == "help" )
-			{
-				print("철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /j4d 이동할 거리");
-			}
-			else
-			{
-				print("이동할 거리는 숫자로 설정해야 합니다");
-			}
+			print("철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /j4d 이동할 거리");
 		}
 	}
 }
