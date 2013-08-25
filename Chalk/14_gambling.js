@@ -1,4 +1,4 @@
-// ver 0.1
+// ver 0.2
 
 var coal = 263;
 var iron = 265;
@@ -17,19 +17,19 @@ function useItem( x , y , z , i , b )
 	{
 		if( ( i == coal ) || ( i == iron ) || ( i == gold ) || ( i == diam ) )
 		
-			if( i == coal && rand( 20 ) )
+			if( i == coal && rand( 10 ) )
 			{
 				give( i );
 			}
-			else if( i == iron && rand( 40 ) )
+			else if( i == iron && rand( 30 ) )
 			{
 				give( i );
 			}
-			else if( i == gold && rand( 60 ) )
+			else if( i == gold && rand( 50 ) )
 			{
 				give( i );
 			}
-			else if( i == diam && rand( 80 ) )
+			else if( i == diam && rand( 70 ) )
 			{
 				give( i );
 			}
@@ -38,11 +38,12 @@ function useItem( x , y , z , i , b )
 				print("광물 하나 날렸네 ㅊㅊ");
 				addItemInventory( i , -1 );
 			}
-		}
+		
 		else
 		{
 			print("어허! 돈 없으면 가라!");
 		}
+	}
 	
 }
 
