@@ -1,4 +1,4 @@
-//ver 0.1
+//ver 0.2
 
 var byVal = 30;
 var upItem = 267;
@@ -13,7 +13,10 @@ function useItem( x , y , z , i , b )
 {
 	if( i == upItem )
 	{
-		setVelY( getPlayerEnt() , byVal );
+		if( getTile( getPlayerX() , getPlayerY() - 2 , getPlayerZ() ) == 0)
+		{
+			setVelY( getPlayerEnt() , byVal );
+		}
 	}
 	else if( i == downItem )
 	{
