@@ -6,9 +6,9 @@ var val = 2;
 
 function modTick()
 {
-	if( Level.getTile( Player.getX() , Player.getY() - 2 , Player.getZ() ) == 26 )
+	if( Level.getTile( Player.getX() , Player.getY() - 3 , Player.getZ() ) == 26 )
 	{
 		Entity.setVelY( Player.getEntity() , val );
-		val *= 1.5;
+		val += 1.5;
 	}
 }
