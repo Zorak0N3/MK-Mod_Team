@@ -1,14 +1,23 @@
 // Bouncy Bed
 // By Chalk
-// Current Version : 0.2
+// Current Version : 0.4
 
 var val = 2;
-
+var del = 15;
 function modTick()
 {
-	if( Level.getTile( Player.getX() , Player.getY() - 3 , Player.getZ() ) == 26 )
+	if( del > 0 )
 	{
-		Entity.setVelY( Player.getEntity() , val );
-		val += 1.5;
+		del--;
+		
 	}
+	else
+	{
+		if( Level.getTile( Player.getX() , Player.getY() - 2 , Player.getZ() ) == 26 )
+		{
+			Entity.setVelY( Player.getEntity() , val );
+			val += 1;
+		}
+	}
+
 }
