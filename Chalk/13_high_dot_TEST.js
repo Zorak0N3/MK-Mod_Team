@@ -1,12 +1,13 @@
-//ver 0.2
+//ver 0.4
 
-var byVal = 30;
+var byVal = 5;
 var upItem = 267;
 var downItem = 292;
 
 function newLevel()
 {
 	print("[highdot] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /highdot 이동할 거리");
+	print("이동할 거리 : " + byVal + "칸");
 }
 
 function useItem( x , y , z , i , b )
@@ -33,7 +34,7 @@ function procCmd( cmd )
 		if( !(isNaN( cutcmd[1] ) ) )
 		{
 			byVal = cutcmd[1];
-			print("이동 거리 : " + byVal + "칸");
+			print("이동할 거리 : " + byVal + "칸");
 		}
 		else
 		{
