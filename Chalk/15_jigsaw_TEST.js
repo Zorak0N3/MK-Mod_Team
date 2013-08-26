@@ -14,7 +14,7 @@ function newLevel()
 	LetTheGameBegin = true;
 }
 
-function modTick
+function modTick()
 {
 	if( tick > 0 )
 	{
