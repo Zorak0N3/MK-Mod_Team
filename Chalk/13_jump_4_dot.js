@@ -1,4 +1,4 @@
-//ver 0.4
+//ver 0.5
 
 var byVal = 5;
 var upItem = 267;
@@ -6,8 +6,8 @@ var downItem = 292;
 
 function newLevel()
 {
-	print("[Jump4Dot] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /j4d 이동할 거리");
-	print("이동할 거리 : " + byVal + "칸");
+	print("\n[Jump4Dot] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 높이 설정 - /j4d 이동할 높이");
+	print("\n이동할 거리 : " + byVal + "칸");
 }
 
 function useItem( x , y , z , i , b )
@@ -20,7 +20,7 @@ function useItem( x , y , z , i , b )
 		}
 		else
 		{
-			print("날지 않은 상태에서 사용하면 위험합니다");
+			print("\n날지 않은 상태에서 사용하면 위험합니다");
 			
 		}
 	}
@@ -39,11 +39,11 @@ function procCmd( cmd )
 		if( !(isNaN( cutcmd[1] ) ) )
 		{
 			byVal = cutcmd[1];
-			print("이동할 거리 : " + byVal + "칸");
+			print("\n이동할 거리 : " + byVal + "칸");
 		}
 		else
 		{
-			print("철칼로 상승, 철괭이로 하강\n이동할 거리 설정 - /j4d 이동할 거리");
+			print("\n철칼로 상승, 철괭이로 하강\n이동할 높이 설정 - /j4d 이동할 높이");
 		}
 	}
 }
