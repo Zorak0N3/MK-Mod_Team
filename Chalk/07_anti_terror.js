@@ -147,7 +147,7 @@ function carriedTerror( reason ) // Timer Terrorist
 	else
 	{
 		CarriedTimer--;
-		print("[Anti-Terror] " + reason + " \n" + CarriedTimer + "초 안에 아이템을 내려놓지 않으면 처벌합니다");
+		print("\n[Anti-Terror]\n" + reason + "\n" + CarriedTimer + "초 안에 아이템을 내려놓지 않으면 처벌합니다");
 	}
 }
 
@@ -161,6 +161,6 @@ function antiTerror( reason ) //  Kill Terrorist
 	else
 	{
 		ThreeOut--;
-		print("[Anti-Terror] 다음과 같은 이유로 경고 : " + reason + " \n" + ThreeOut + "번 더 경고를 받으면 처벌합니다");
+		print("\n[Anti-Terror]\n" + reason + "\n" + ThreeOut + "번 더 경고를 받으면 처벌합니다");
 	}
 }
