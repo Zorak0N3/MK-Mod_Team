@@ -1,11 +1,16 @@
 // Anti-Terror Script 
-// v1.3.5
+// Current Version - 1.4
 // By CHALK ( amato17 ) - 7th
 // For MCPE Korea < II > ~
 
 var TimerTick = 15;
 var CarriedTimer = 10;
 var ThreeOut = 3;
+
+function newLevel()
+{
+	print("\n[Anti-Terror]\nBy Chalk(amato17)");
+}
 
 function useItem( x , y , z , iID , bID )
 {
