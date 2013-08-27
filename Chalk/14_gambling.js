@@ -1,4 +1,4 @@
-// ver 0.2
+// ver 0.3
 
 var coal = 263;
 var iron = 265;
@@ -35,13 +35,13 @@ function useItem( x , y , z , i , b )
 			}
 			else
 			{
-				print("광물 하나 날렸네 ㅊㅊ");
+				print("\n광물 하나 날렸네 ㅊㅊ");
 				addItemInventory( i , -1 );
 			}
 		
 		else
 		{
-			print("어허! 돈 없으면 가라!");
+			print("\n어허! 돈 없으면 가라!");
 		}
 	}
 	
@@ -65,5 +65,5 @@ function rand( per )
 function give( sucItem )
 {	
 	addItemInventory( sucItem , 4 );
-	print("판돈은 내가 싹 쓸어간다~");
+	print("\n판돈은 내가 싹 쓸어간다~");
 }
