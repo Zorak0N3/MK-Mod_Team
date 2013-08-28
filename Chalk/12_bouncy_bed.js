@@ -1,12 +1,12 @@
 // Bouncy Bed
 // By Chalk
-// Current Version : 1.2
+// Current Version : 1.4
 
 var up = 0.1;
 
 function newLevel()
 {
-	print( "\n[BouncyBed]\n제작자 : 초크\n침대의 가운데를 밟지 않으면 낙사데미지를 입습니다" );	
+	print( "\n[Bouncy-Bed]\nBy Chalk(amato17\n침대의 가운데를 밟지 않으면 낙사데미지를 입는다고!" );	
 }
 
 function useItem( x , y , z , itemID , blockID )
@@ -18,7 +18,12 @@ function modTick()
 {
 	if( getTile( getPlayerX() , getPlayerY() - 2 , getPlayerZ() ) == 26 )
 	{
-			setVelY( getPlayerEnt() , up );
-			up += 0.1;
+		setVelY( getPlayerEnt() , up );
+		up += 0.1;
+	}
+	else if( getTile( getPlayerX() , getPlayerY() - 2 , getPlayerZ() ) != 0  )
+	{
+		
+		up = 0.1;
 	}
 }
