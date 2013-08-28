@@ -1,4 +1,4 @@
-//ver 0.5
+//ver 0.6
 
 var byVal = 5;
 var upItem = 267;
@@ -6,7 +6,7 @@ var downItem = 292;
 
 function newLevel()
 {
-	print("\n[Jump4Dot] 제작자 : 초크(amato17)\n철칼로 상승, 철괭이로 하강\n이동할 높이 설정 - /j4d 이동할 높이");
+	print("\n[Jump4Dot]\nBy Chalk(amato17\n철칼로 상승, 철괭이로 하강\n이동할 높이 설정 - /j4d 이동할 높이");
 	print("\n이동할 거리 : " + byVal + "칸");
 }
 
