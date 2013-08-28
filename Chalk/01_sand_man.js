@@ -1,13 +1,17 @@
 /*
  * 제작자 : 초크(amato17) - MCPE Korea - 1
- * 버젼 : 1.3.0
+ * 버젼 : 1.4
  */
- 
+ function newLevel()
+{
+	print("\n[Sand-Man]\nBy Chalk(amato17)");
+}
+
 function useItem(x,y,z,itemId,blockId)
 {
   if(itemId == 280)
   {
-    print("미나어롷!");
+    print("\n미나어롷!");
     setTile(x ,y + 3,z ,12); //가운데
     setTile(x + 1,y + 3,z ,12); //오른쪽
     setTile(x + 2,y + 3,z ,12); //더오른쪽
