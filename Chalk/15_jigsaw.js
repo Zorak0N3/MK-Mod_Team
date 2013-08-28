@@ -1,4 +1,5 @@
 // JIGSAW SCRIPT
+// VER 0.2
 
 var LetTheGameBegin = false;
 var tick = 15;
@@ -33,7 +34,7 @@ function modTick()
 
 function leaveGame()
 {
-	print(" ");
+	print("\n[JIGSAW]\nBy Chalk(amato17)");
 }
 
 function procCmd( answer )
