@@ -1,4 +1,4 @@
-// Ver 0.2
+// Ver 0.3
 // By Chlak - amato17
 
 var realy = 0;
@@ -7,6 +7,11 @@ var spawnX = 128;
 var spawnY = 64;
 var spawnZ = 128;
 var money = 0;
+
+function newLevel()
+{
+	print("\n[Sky-Block]\nBy Chalk(amato17)\n/skyblock help 로 설명을 들을 수 있다고!");
+}
 
 function useItem( x , y , z , iID , bID )
 {
