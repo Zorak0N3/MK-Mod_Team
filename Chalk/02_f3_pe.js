@@ -1,6 +1,10 @@
 /* 제작자 : 초록크리퍼(amato17) - MCPE Korea - 2
- * 버젼 : 1.3.1
+ * 버젼 : 1.4
  */
+function newLevel()
+{
+	print("\n[F3-PE]\nBy Chalk(amato17)");
+}
 
 function useItem(x, y, z, itemId, blockId) 
 {
@@ -10,12 +14,12 @@ function useItem(x, y, z, itemId, blockId)
         var px = getPlayerX();
 	var py = getPlayerY();
 	var pz = getPlayerZ();
-	print("[F3 PE] Player Info - ID : " + itemId + "\nX : " + px  + "\nY : " + py + "\nZ : " + pz);
-	print("[F3 PE] Block Info - ID : " + blockId + ", X : " + x  + ", Y : " + y + ", Z : " + z);
+	print("\n[F3-PE] Player Info\nID : " + itemId + "\nX : " + px  + "\nY : " + py + "\nZ : " + pz);
+	print("\n[F3-PE] Block Info\nID : " + blockId + ",\nX : " + x  + ",\nY : " + y + ",\nZ : " + z);
     }
     else if(itemId==340)
     {
     	preventDefault();
-	print("[F3 PE] Block ID : " + blockId);
+	print("\n[F3-PE] Block ID : " + blockId);
     }
 }
