@@ -5,7 +5,7 @@
 
 function newLevel()
 {
-	print("\n[쓰레기통]\n옵시디언에 아이템을 버려라!\nBy Chalk(amato17)");
+	print("\n[Trash-Can]\nBy Chalk(amato17)\n옵시디언에 아이템을 버려라!");
 }
 
 function useItem( x , y , z , iID , bID )
