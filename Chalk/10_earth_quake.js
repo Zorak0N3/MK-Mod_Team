@@ -5,7 +5,7 @@
 
 function newLevel()
 {
-	print("\n[지진]\n제작자 : 초크\n금부츠를 들면 지진이 일어납니다\n나는 중에는 사용하지 마세요");
+	print("\n[Earth-Quake]\nBy Chalk(amato17)\n금부츠를 들면 지진이?\n나는 중에 사용하면 큰일남!");
 	
 }
 
