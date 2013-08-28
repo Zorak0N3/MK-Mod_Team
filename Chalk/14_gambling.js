@@ -1,4 +1,4 @@
-// ver 0.3
+// ver 0.4
 
 var coal = 263;
 var iron = 265;
@@ -7,7 +7,7 @@ var diam = 264;
 
 function newLevel()
 {
-	print("\n[도박]\n제작자 : 초크(amato17)\n석탄, 철괴, 금괴, 다이아몬드로\n도박을 할 수 있습니다");
+	print("\n[Gambling]\nBy Chalk(amato17\n석탄, 철괴, 금괴, 다이아몬드를 청금석 블럭에 넣어 도박을 할 수 있습니다");
 
 }
 
