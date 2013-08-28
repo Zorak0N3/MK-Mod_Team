@@ -4,9 +4,10 @@
 // disposable-tool.js
 function newLevel()
 {
-	print("\n[일회용도구]\n제작자 : 초크\n손으로 클릭시 일회용 도구 지급");
+	print("\n[Disposable-Tool]\nBy Chalk(amato17)\n맨손으로 클릭하면 일회용 도구가!");
 	
 }
+
 
 function useItem( x , y , z , iID , bID )
 {
