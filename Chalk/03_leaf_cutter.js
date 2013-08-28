@@ -1,6 +1,12 @@
 // 초크의 3번째 스크립트 
-// ver 1.3.0
+// ver 1.4
 // leaf cutter script
+
+function newLevel()
+{
+	print("\n[Leaf-Cutter]\nBy Chalk(amato17)");
+}
+
 
 function useItem(x,y,z,itemId,blockId)
 {
