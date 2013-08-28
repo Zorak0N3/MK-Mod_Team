@@ -3,6 +3,8 @@
 // Idea By SK Telecom - LTE NUTT APP
 // Current Version = 1.4
 
+//1.4
+
 var startYaw;
 var curYaw;
 var isShakeStart = 0;
@@ -10,7 +12,7 @@ var delay = 150;
 
 function newLevel()
 {
-	print("\n[LTE 눝]\nIdea By SKT\nBy Chalk(amato17)");
+	print("\n[LTE 눝]\nBy Chalk(amato17)\nIdea By SKT");
 }
 
 function modTick()
