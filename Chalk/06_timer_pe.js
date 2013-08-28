@@ -1,15 +1,20 @@
-// Timer_PE v1.3.9
+// Timer_PE v1.4
 // Script By Chalk
 // For MCPE Korea
 // 6th
 
 var tick = 0;
-var tuto = 0;
 var playTime = 0;
 var CX;
 var CY;
 var CZ;
 var isClockSet = 0;
+
+function newLevel()
+{
+	print("\n[Timer-PE]\nBy Chalk(amato17)");
+}
+
 
 function setNumber(loc, num)
 {
@@ -220,11 +225,6 @@ function setNumber(loc, num)
 
 function modTick()
 {
-	if (tuto == 0)
-	{
-		print("[TimerPE] 제작자 : 초크");
-		tuto = 1;
-	}
 	tick++;
 	if(tick==15)
 	{
