@@ -12,20 +12,9 @@
  * var myLoadedLocation = loadData( 99 ); 
  * // 99번째 리스트에 저장된 배열을 myLoadedLocation 에 저장
  *
- * 제작자 : 초크 ( amato17 ) | 버젼 : 0.1 | MCPE Korea Mod Team
+ * 제작자 : 초크 ( amato17 ) | 버젼 : 0.2 | MCPE Korea Mod Team
  *
  */
-
-var zero = 80; // 눈블럭
-var one = 41; // 금블럭
-var two = 42; // 은블럭
-var three = 43; // 돌반블럭 두개겹침
-var four = 44; // 돌반블럭
-var five = 45; // 벽돌
-var six = 46; // TNT
-var seven = 47; //책장
-var eight = 48; // 모스스톤
-var nine = 49; // 옵시디언
 
 function saveData( xyz , list )
 {	
@@ -34,9 +23,10 @@ function saveData( xyz , list )
 		print("사용 가능한 리스트의 범위는 0 ~ 99 입니다");
 		return;
 	}
+	
 	var Xone; 
 	var Xtwo;
-	var	Xthree;
+	var Xthree;
 	
 	var Yone;
 	var Ytwo;
@@ -48,13 +38,13 @@ function saveData( xyz , list )
 	
 	if( xyz[0] < 10 )
 	{
-		Xone = zero;
-		Xtwo = zero;
+		Xone = getNum(0);
+		Xtwo = getNum(0);
 		Xthree = getNum( xyz[0] );
 	}
 	else if( xyz[0] < 100 )
 	{
-		Xone = zero;
+		Xone = getNum(0);
 		Xtwo = getNum( parseInt( xyz[0] * 0.1 ) );
 		Xthree = getNum( xyz[0] - ( Xtwo * 10 ) );
 	}
@@ -73,13 +63,13 @@ function saveData( xyz , list )
 	
 	if( xyz[1] < 10 )
 	{
-		Yone = zero;
-		Ytwo = zero;
+		Yone = getNum(0);
+		Ytwo = getNum(0);
 		Ythree = getNum( xyz[1] );
 	}
 	else if( xyz[1] < 100 )
 	{
-		Yone = zero;
+		Yone = getNum(0);
 		Ytwo = getNum( parseInt( xyz[1] * 0.1 ) );
 		Ythree = getNum( xyz[1] - ( Ytwo * 10 ) );
 	}
@@ -98,13 +88,13 @@ function saveData( xyz , list )
 	
 	if( xyz[2] < 10 )
 	{
-		Zone = zero;
-		Ztwo = zero;
+		Zone = getNum(0);
+		Ztwo = getNum(0);
 		Zthree = getNum( xyz[2] );
 	}
 	else if( xyz[2] < 100 )
 	{
-		Zone = zero;
+		Zone = getNum(0);
 		Ztwo = getNum( parseInt( xyz[2] * 0.1 ) );
 		Zthree = getNum( xyz[2] - ( Ztwo * 10 ) );
 	}
@@ -174,6 +164,18 @@ function loadData( list )
 
 function getNum( nn )
 {
+	var zero = 80; // 눈블럭
+	var one = 41; // 금블럭
+	var two = 42; // 은블럭
+	var three = 43; // 돌반블럭 두개겹침
+	var four = 44; // 돌반블럭
+	var five = 45; // 벽돌
+	var six = 46; // TNT
+	var seven = 47; //책장
+	var eight = 48; // 모스스톤
+	var nine = 49; // 옵시디언
+
+
 	switch( nn )
 	{
 		case 0 :
