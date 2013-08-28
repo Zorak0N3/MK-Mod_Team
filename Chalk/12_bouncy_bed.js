@@ -6,7 +6,7 @@ var up = 0.1;
 
 function newLevel()
 {
-	print( "\n[Bouncy-Bed]\nBy Chalk(amato17\n침대의 가운데를 밟지 않으면 낙사데미지를 입는다고!" );	
+	print( "\n[Bouncy-Bed]\nBy Chalk(amato17\n침대를 밟으면 낙사데미지를 입는다고!" );	
 }
 
 function useItem( x , y , z , itemID , blockID )
