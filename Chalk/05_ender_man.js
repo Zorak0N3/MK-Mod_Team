@@ -1,9 +1,15 @@
 // EnderMan Script - 5th
 // By Chalk 
-// Ver 1.3.0
+// Ver 1.4
 // For MCPE Korea
 
 var pl = null;
+
+function newLevel()
+{
+	print("\n[Ender-Man]\nBy Chalk(amato17)");
+}
+
 
 function useItem(x, y, z, itemId, blockId)
 {
