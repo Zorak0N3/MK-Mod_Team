@@ -1,8 +1,13 @@
 // Walk proudly wherever - 어디서나 당당하게 걷기
 // 제작자 : 초크 ( amato17 ) - MCPE Korea Mod Team
-// Current Version = 0.1.0
+// Current Version = 0.2
 
 var isOn = false;
+
+function newLevel()
+{
+	print("\n[Float]\nBy Chalk(amato17)\n/float [on|off]로 액체 위를 걸을 수 있다고!");
+}
 
 function procCmd( command )
 {
