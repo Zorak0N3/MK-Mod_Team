@@ -1,7 +1,13 @@
 // PITFALL SCRIPT 
 // BY CHALK 
-// VER 1.3.0 
+// VER 1.4
 // FOR MCPEKOREA - 4
+
+function newLevel()
+{
+	print("\n[Pit-Fall]\nBy Chalk(amato17)");
+}
+
 
 function modTick()
 {
