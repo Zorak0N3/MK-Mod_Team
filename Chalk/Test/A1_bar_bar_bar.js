@@ -1,6 +1,6 @@
 // Crayon Pop - Bar Bar Bar
 // Pop Pop Crayon Pop - Get Set Ready Go!
-// Ver 0.3
+// Ver 0.4
 
 var px;
 var py;
@@ -15,6 +15,7 @@ var e;
 var time = 60;
 
 var go = 0;
+var attReady = 0;
 
 function procCmd( cmd )
 {
@@ -24,7 +25,7 @@ function procCmd( cmd )
 		py = getPlayerY();
 		pz = getPlayerZ();
 		
-		print("\nGet - 소 5마리가 스폰됩니다");
+		print("\n겟! - 소 5마리가 스폰됩니다");
 		
 		spawnCow( px - 4 , py , pz , "mob/cow.png" );
 		spawnCow( px - 2 , py , pz , "mob/cow.png" );
@@ -32,7 +33,7 @@ function procCmd( cmd )
 		spawnCow( px + 2 , py , pz , "mob/cow.png" );
 		spawnCow( px + 4 , py , pz , "mob/cow.png" );
 		
-		print("\nSet - 스폰된 소 5마리를 때려주세요");
+		print("\n셋! - 스폰된 소 5마리를 때려주세요");
 		
 		attReady = 1;
 	
@@ -45,38 +46,47 @@ function attackHook( attacker , victim )
 	switch( attReady )
 	{
 		case 1 :
+			preventDefault();
 			a = victim;
 			rideAnimal( a , a );
 			attReady = 2;
 			print("\n첫번째 소를 설정했습니다");
 			break;
 		case 2 :
+			preventDefault();
 			b = victim;
 			rideAnimal( b , b );
 			attReady = 3;
 			print("\n두번째 소를 설정했습니다");
 			break;
 		case 3 :
+			preventDefault();
 			c = victim;
 			rideAnimal( c , c );
 			attReady = 4;
 			print("\n세번째 소를 설정했습니다");
 			break;
 		case 4 :
+			preventDefault();
 			d = victim;
 			rideAnimal( d , d );
 			print("\n네번째 소를 설정했습니다");
 			attReady = 5;
 			break;
 		case 5 :
+			preventDefault();
 			e = victim;
 			rideAnimal( e , e );
 			print("\n다섯번째 소를 설정했습니다");
 			attReady = 6;
 			
-			print("\nReady - 춤을 출 위치를 철괴로 설정하세요");
+			print("\n레디! - 춤을 출 위치를 철괴로 설정하세요");
 			
 			break;
+			
+		case 6 :
+			preventDefault();
+			print("\n인벤토리에 추가된 철괴로 춤을 출 위치를 클릭하세요");
 			
 	}
 	
@@ -85,13 +95,18 @@ function attackHook( attacker , victim )
 function useItem( x , y , z , i , b )
 {
 	
-	if( i == 265 )
+	if( i == 265 && attReady == 6 )
 	{
 		
 		addItemInventory( 265 , -1 );
-		setPosition( a , x - 2 , y );
-		go = true;
-		print("\nGo!");
+		setPosition( a , x - 2 , y + 1 , z );
+		setPosition( b , x - 1 , y + 1 , z );
+		setPosition( c , x + 0 , y + 1 , z );
+		setPosition( d , x + 1 , y + 1 , z );
+		setPosition( e , x + 2 , y + 1 , z );
+		go = 1;
+		print("\n고!");
+		attReady = 7;
 	
 	}
 		
