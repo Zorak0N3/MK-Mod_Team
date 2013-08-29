@@ -1,6 +1,6 @@
 // Crayon Pop - Bar Bar Bar
 // Pop Pop Crayon Pop - Get Set Ready Go!
-// Ver 0.4
+// Ver 0.4.1
 
 var px;
 var py;
@@ -99,14 +99,15 @@ function useItem( x , y , z , i , b )
 	{
 		
 		addItemInventory( 265 , -1 );
-		setPosition( a , x - 2 , y + 1 , z );
-		setPosition( b , x - 1 , y + 1 , z );
-		setPosition( c , x + 0 , y + 1 , z );
-		setPosition( d , x + 1 , y + 1 , z );
-		setPosition( e , x + 2 , y + 1 , z );
-		go = 1;
+		Entity.setPosition( a , x - 2 , y + 1 , z );
+		Entity.setPosition( b , x - 1 , y + 1 , z );
+		Entity.setPosition( c , x + 0 , y + 1 , z );
+		Entity.setPosition( d , x + 1 , y + 1 , z );
+		Entity.setPosition( e , x + 2 , y + 1 , z );
+		
 		print("\n고!");
 		attReady = 7;
+		go = 1;
 	
 	}
 		
@@ -123,20 +124,20 @@ function modTick()
 			
 			if( time == 15 )
 			{
-				setVelY( a , 2 );
+				Entity.setVelY( a , 2 );
 				//setVelY( b , -2 );
-				setVelY( c , 2 );
+				Entity.setVelY( c , 2 );
 				//setVelY( d , -2 );
-				setVelY( e , 2 );
+				Entity.setVelY( e , 2 );
 			}
 			
 		}
 		else
 		{
 			//setVelY( a , -2 );
-			setVelY( b , 2 );
+			Entity.setVelY( b , 2 );
 			//setVelY( c , -2 );
-			setVelY( d , 2 );
+			Entity.setVelY( d , 2 );
 			//setVelY( e , -2 );
 			time = 30;
 		}
