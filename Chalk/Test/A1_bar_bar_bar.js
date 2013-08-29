@@ -12,7 +12,7 @@ var c;
 var d;
 var e;
 
-var time = 60;
+var time = 30;
 
 var go = 0;
 var attReady = 0;
@@ -121,7 +121,7 @@ function modTick()
 		{
 			time--;
 			
-			if( time == 30 )
+			if( time == 15 )
 			{
 				setVelY( a , 2 );
 				//setVelY( b , -2 );
@@ -138,7 +138,7 @@ function modTick()
 			//setVelY( c , -2 );
 			setVelY( d , 2 );
 			//setVelY( e , -2 );
-			time = 60;
+			time = 30;
 		}
 	
 	}
