@@ -27,11 +27,15 @@ function procCmd( cmd )
 		
 		print("\n겟! - 소 5마리가 스폰됩니다");
 		
-		spawnCow( px - 4 , py , pz , "mob/cow.png" );
 		spawnCow( px - 2 , py , pz , "mob/cow.png" );
+		
+		spawnCow( px - 1 , py , pz , "mob/cow.png" );
+		
 		spawnCow( px + 0 , py , pz , "mob/cow.png" );
+		
+		spawnCow( px + 1 , py , pz , "mob/cow.png" );
+		
 		spawnCow( px + 2 , py , pz , "mob/cow.png" );
-		spawnCow( px + 4 , py , pz , "mob/cow.png" );
 		
 		print("\n셋! - 스폰된 소 5마리를 때려주세요");
 		
