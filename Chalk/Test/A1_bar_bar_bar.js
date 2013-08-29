@@ -1,6 +1,6 @@
 // Crayon Pop - Bar Bar Bar
 // Pop Pop Crayon Pop - Get Set Ready Go!
-// 0.1
+// Ver 0.2
 
 var px;
 var py;
@@ -49,14 +49,15 @@ function procCmd( cmd )
 
 function modTick()
 {
-	setVelY( a , 0 );
-	setVelY( b , 0 );
-	setVelY( c , 0 );
-	setVelY( d , 0 );
-	setVelY( e , 0 );
-	
+
 	if( go )
 	{
+		setVelY( a , 0 );
+		setVelY( b , 0 );
+		setVelY( c , 0 );
+		setVelY( d , 0 );
+		setVelY( e , 0 );
+		
 		if( time > 0 )
 		{
 			time--;
