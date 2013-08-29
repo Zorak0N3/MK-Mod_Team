@@ -1,16 +1,18 @@
 // Crayon Pop - Bar Bar Bar
 // Pop Pop Crayon Pop - Get Set Ready Go!
-// Ver 0.2
+// Ver 0.3
 
 var px;
 var py;
 var pz;
+
 var a;
 var b;
 var c;
 var d;
 var e;
-var time = 30;
+
+var time = 60;
 
 function procCmd( cmd )
 {
@@ -42,7 +44,6 @@ function procCmd( cmd )
 		
 		print("\nGo!");
 	
-	
 	}
 
 }
@@ -51,35 +52,29 @@ function modTick()
 {
 
 	if( go )
-	{
-		setVelY( a , 0 );
-		setVelY( b , 0 );
-		setVelY( c , 0 );
-		setVelY( d , 0 );
-		setVelY( e , 0 );
-		
+	{	
 		if( time > 0 )
 		{
 			time--;
 			
-			if( time == 15 )
+			if( time == 30 )
 			{
 				setVelY( a , 2 );
-				setVelY( b , -2 );
+				//setVelY( b , -2 );
 				setVelY( c , 2 );
-				setVelY( d , -2 );
+				//setVelY( d , -2 );
 				setVelY( e , 2 );
 			}
 			
 		}
 		else
 		{
-			setVelY( a , -2 );
+			//setVelY( a , -2 );
 			setVelY( b , 2 );
-			setVelY( c , -2 );
+			//setVelY( c , -2 );
 			setVelY( d , 2 );
-			setVelY( e , -2 );
-			time = 30;
+			//setVelY( e , -2 );
+			time = 60;
 		}
 	
 	}
