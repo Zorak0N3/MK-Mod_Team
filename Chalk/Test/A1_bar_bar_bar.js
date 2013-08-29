@@ -14,6 +14,8 @@ var e;
 
 var time = 60;
 
+var go = 0;
+
 function procCmd( cmd )
 {
 	if( cmd == "팝 팝 크레용팝" )
