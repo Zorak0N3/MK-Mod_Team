@@ -84,6 +84,8 @@ function attackHook( attacker , victim )
 			print("\n다섯번째 소를 설정했습니다");
 			attReady = 6;
 			
+			addItemInventory( 265 , 1 );
+			
 			print("\n레디! - 춤을 출 위치를 철괴로 설정하세요");
 			
 			break;
