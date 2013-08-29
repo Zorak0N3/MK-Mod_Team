@@ -74,18 +74,27 @@ function attackHook( attacker , victim )
 			print("\n다섯번째 소를 설정했습니다");
 			attReady = 6;
 			
-			print("\nReady");
-		
-			go = true;
-			
-			
-		
-			print("\nGo!");
+			print("\nReady - 춤을 출 위치를 철괴로 설정하세요");
 			
 			break;
 			
 	}
 	
+}
+
+function useItem( x , y , z , i , b )
+{
+	
+	if( i == 265 )
+	{
+		
+		addItemInventory( 265 , -1 );
+		setPosition( a , x - 2 , y );
+		go = true;
+		print("\nGo!");
+	
+	}
+		
 }
 
 function modTick()
