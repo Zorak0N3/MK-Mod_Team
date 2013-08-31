@@ -101,7 +101,7 @@ function mobSpawner()
 						spawnChicken( mx , my , mz , 'mob/chicken.png' );
 						break;
 					case 2 :
-						spawnPigZombie( mx , my , mz , 276 , 'mob/char.png' );
+						spawnPigZombie( mx , my , mz , 283 , 'mob/char.png' );
 						break;
 				}
 				
