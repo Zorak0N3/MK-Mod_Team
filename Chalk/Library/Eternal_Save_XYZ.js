@@ -1,18 +1,23 @@
 /* 
  *
  * 이 주석 아래에 있는 모든 내용을 그대로
- * 라이브러리를 이용할 스크립트에 붙여넣으세요 
+ * 라이브러리를 이용할 스크립트에 붙여넣으세요
  *
- * ## 좌표 배열을 리스트에 저장하는 방법
- * var myLocation = [ 128 , 64 , 128 ];
- * saveData( myLocation , 99 ); 
- * // 99번째 리스트에 myLocation의 값을 저장함
+ * 제작자 : 초크 ( amato17 ) | 버젼 : 0.3 | MCPE Korea Mod Team
  *
- * ## 리스트에서 좌표 배열을 불러오는 방법
- * var myLoadedLocation = loadData( 99 ); 
+ * 좌표 배열을 리스트에 저장하는 방법
+ *
+ * var myLocation = [ parseInt( getPlayerX() ) , parseInt( getPlayerY() ) , parseInt( getPlayerZ() ) ];
+ * var isSuccess = saveData( myLocation , 99 );
+ * // 99번째 리스트에 myLocation의 값( 플레이어의 현재 위치 )을 저장함
+ * // 전달할 배열은 반드시 자연수여야 함
+ * // saveData() 함수는 성공여부를 반환함
+ *
+ * 리스트에서 좌표 배열을 불러오는 방법
+ *
+ * var myLoadLocation = loadData( 99 ); 
  * // 99번째 리스트에 저장된 배열을 myLoadedLocation 에 저장
- *
- * 제작자 : 초크 ( amato17 ) | 버젼 : 0.2 | MCPE Korea Mod Team
+ * // 해당 리스트에 저장된 배열이 존재하지 않으면 null 반환
  *
  */
 
@@ -20,8 +25,8 @@ function saveData( xyz , list )
 {	
 	if( list > 100 )
 	{
-		print("사용 가능한 리스트의 범위는 0 ~ 99 입니다");
-		return;
+		print("\n사용 가능한 리스트의 범위는 0 ~ 99 입니다");
+		return false;
 	}
 	
 	var Xone; 
@@ -56,8 +61,8 @@ function saveData( xyz , list )
 	}
 	else
 	{
-		print("X축의 값이 올바르지 않습니다");
-		return;
+		print("\nX축의 값이 올바르지 않습니다");
+		return false;
 	}
 	
 	
@@ -81,8 +86,8 @@ function saveData( xyz , list )
 	}
 	else
 	{
-		print("Y축의 값이 올바르지 않습니다");
-		return;
+		print("\nY축의 값이 올바르지 않습니다");
+		return false;
 	}
 	
 	
@@ -106,8 +111,8 @@ function saveData( xyz , list )
 	}
 	else
 	{
-		print("Z축의 값이 올바르지 않습니다");
-		return;
+		print("\nZ축의 값이 올바르지 않습니다");
+		return false;
 	}
 	
 	setTile( 256 - list , 0 , 1 , Xone );
@@ -122,15 +127,16 @@ function saveData( xyz , list )
 	setTile( 256 - list , 2 , 2 , Ztwo );
 	setTile( 256 - list , 2 , 3 , Zthree );
 	
-	print( list + "번째 리스트에 저장이 완료되었습니다.");
+	print( "\n" + list + "번째 리스트에 저장이 완료되었습니다.");
+	return true;
 }
 
 function loadData( list )
 {
 	if( list > 100 )
 	{
-		print("사용 가능한 리스트의 범위는 0 ~ 99 입니다");
-		return;
+		print("\n사용 가능한 리스트의 범위는 0 ~ 99 입니다");
+		return null;
 	}
 	
 	var XoneL = getNum( getTile( 256 - list , 0 , 1 ) );
@@ -147,8 +153,8 @@ function loadData( list )
 	
 	if( XoneL == 404 || XtwoL == 404 || XthreeL == 404 || YoneL == 404 || YtwoL == 404 || YthreeL == 404 || ZoneL == 404 || ZtwoL == 404 || ZthreeL == 404 )
 	{
-		print( list + "번째 리스트에 저장된 데이터가 없거나 손상되었습니다");
-		return;
+		print( "\n" + list + "번째 리스트에 저장된 데이터가 없거나 손상되었습니다");
+		return null;
 	}
 	
 	var finalX = XoneL * 100 + XtwoL * 10 + XthreeL;
@@ -157,7 +163,7 @@ function loadData( list )
 	
 	var xyzSend = [ finalX , finalY , finalZ ];
 	
-	print( list + "번째 리스트에 저장된 데이터를 불러왔습니다");
+	print( "\n" + list + "번째 리스트에 저장된 데이터를 불러왔습니다");
 
 	return xyzSend;
 }
