@@ -59,7 +59,6 @@ function procCmd( cmd )
 	}
 	
 }
-
 /* 
  *
  * 이 주석 아래에 있는 모든 내용을 그대로
@@ -308,5 +307,7 @@ function getNum( nn )
 		
 		default :
 			return 404;
+			
 	}
+	print("!");
 }
