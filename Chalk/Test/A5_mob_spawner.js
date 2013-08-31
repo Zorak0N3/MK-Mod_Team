@@ -1,4 +1,4 @@
-// 0.9
+// 1.0
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -63,15 +63,26 @@ function modTick()
 {
 	if(on)
 	{
+		var xx = Math.abs( getPlayerX() - sx );
+		var yy = Math.abs( getPlayerY() - sy );
+		var zz = Math.abs( getPlayerZ() - sz );
+		
 		if(tc > 0 )
 		{
-			if(tc > 10 )
+			if(tc < 10 )
 			{
-				setTile( sx , sy , sz , 246 ); 
+				setTile( sx , sy , sz , 49 ); 
 			}
 			else
 			{
-				setTile( sx , sy , sz , 49 );	
+				if( xx < 17 && yy < 17 && zz < 17 )
+				{
+					setTile( sx , sy , sz , 246 );	
+				}
+				else
+				{
+					setTile( sx , sy , sz , 49 ); 
+				}
 			}
 			tc--;
 		
@@ -80,29 +91,22 @@ function modTick()
 		{
 			setTile( sx , sy , sz , 49 );
 			tc = 150;
-			mobSpawner();
+	
+			if( xx < 17 && yy < 17 && zz < 17 )
+			{
+				mobSpawner();
+			}
 		}
 	}
 }
-/*
-function attackHook( attacker , victim )
-{
-	tm = 0;
-}
-*/
+
 function mobSpawner()
 {
-	var xx = Math.abs( getPlayerX() - sx );
-	var yy = Math.abs( getPlayerY() - sy );
-	var zz = Math.abs( getPlayerZ() - sz );
 	
-	if( xx < 17 && yy < 17 && zz < 17 )
-	{
 		var mx = sx + ( Math.random() - Math.random() ) * 4;
 		var my = sy; // -1 0 +1 중 하나이지만 패스
 		var mz = sz + ( Math.random() - Math.random() ) * 4;
 		
-	
 		switch( md )
 		{
 			case 0 :
@@ -115,9 +119,4 @@ function mobSpawner()
 				
 		}
 	}
-	else
-	{
-		print("테스트용 문구 - 몹스포너에서 멀리 떨어져 있습니다");
-		
-	}
-}
+	
