@@ -248,4 +248,5 @@ function getNum( nn )
 			return 404;
 			
 	}
+	print("!");
 }
