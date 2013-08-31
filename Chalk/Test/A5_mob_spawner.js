@@ -9,6 +9,7 @@ function useItem( x , y , z , i , b )
 	if( b == 49 || b == 246 )
 	{
 		if( i == 259 )
+		{
 			preventDefault();
 		
 			sx=x; 
