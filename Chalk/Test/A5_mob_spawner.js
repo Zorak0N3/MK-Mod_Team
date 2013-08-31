@@ -1,4 +1,4 @@
-// 0.5
+// 0.6
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -92,16 +92,17 @@ function mobSpawner()
 			//if(tm < 7 )
 			//{
 				switch( md )
-			{
-				case 0 :
-					spawnCow( mx , my , mz , 'mob/cow.png' );
-					break;
-				case 1 :
-					spawnChicken( mx , my , mz , 'mob/chicken.png' );
-					break;
-				case 2 :
-					spawnPigZombie( mx , my , mz , 276 , 'mob/char.png' );
-					break;
+				{
+					case 0 :
+						spawnCow( mx , my , mz , 'mob/cow.png' );
+						break;
+					case 1 :
+						spawnChicken( mx , my , mz , 'mob/chicken.png' );
+						break;
+					case 2 :
+						spawnPigZombie( mx , my , mz , 276 , 'mob/char.png' );
+						break;
+				}
 				
 				//tm++;
 			//}
