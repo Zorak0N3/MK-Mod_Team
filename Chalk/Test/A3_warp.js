@@ -56,7 +56,7 @@ function procCmd( cmd )
 				}
 			}
 		}
-	} // if warp
+	
 }
 
 /* 
