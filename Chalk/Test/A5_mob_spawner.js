@@ -1,9 +1,11 @@
+// 0.3
+
 var sx, sy, sz;
 var on, tm, tc;
 
 function useItem( x , y , z , i , b )
 {
-	if( i == 259 && b == 49 )
+	if( i == 259 && ( b == 49 || b == 246 ) )
 	{
 		preventDefault();
 		
@@ -24,7 +26,14 @@ function modTick()
 	{
 		if(tc > 0 )
 		{
-			setTile( sx , sy , sz , 246 );
+			if(tc > 10 )
+			{
+				setTile( sx , sy , sz , 246 ); 
+			}
+			else
+			{
+				setTile( sx , sy , sz , 49 );	
+			}
 			tc--;
 		
 		}
