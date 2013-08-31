@@ -1,4 +1,4 @@
-// 0.6
+// 0.7
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -51,6 +51,7 @@ function useItem( x , y , z , i , b )
 			}
 			
 		}
+	}
 }
 
 function modTick()
@@ -86,33 +87,24 @@ function attackHook( attacker , victim )
 */
 function mobSpawner()
 {
-	//if( Math.abs( getPlayerX() - sx ) <= 17 && Math.abs( getPlayerY() - sy ) <= 17 && Math.abs( getPlayerZ() - sz ) <= 17 )
-	//{
-		var mx = sx + ( Math.random() - Math.random() ) * 4;
-		var my = sy; // -1 0 +1 중 하나이지만 패스
-		var mz = sz + ( Math.random() - Math.random() ) * 4;
-		
-		//if( getTile( mx , my - 1 , mz ) == 2 )
-		//{
-			//if(tm < 7 )
-			//{
-		switch( md )
-		{
-			case 0 :
-				spawnCow( mx , my , mz , 'mob/cow.png' );
-				break;
+	var mx = sx + ( Math.random() - Math.random() ) * 4;
+	var my = sy; // -1 0 +1 중 하나이지만 패스
+	var mz = sz + ( Math.random() - Math.random() ) * 4;
+	
+
+	switch( md )
+	{
+		case 0 :
+			spawnCow( mx , my , mz , 'mob/cow.png' );
+			break;
+			
+		case 1 :
+			spawnChicken( mx , my , mz , 'mob/chicken.png' );
+			break;
+			
+		case 2 :
+			spawnPigZombie( mx , my , mz , 283 , 'mob/pigzombie.png' );
+			break;
+	}
 				
-			case 1 :
-				spawnChicken( mx , my , mz , 'mob/chicken.png' );
-				break;
-				
-			case 2 :
-				spawnPigZombie( mx , my , mz , 283 , 'mob/pigzombie.png' );
-				break;
-		}
-				
-				//tm++;
-			//}
-		//}
-	//}
 }
