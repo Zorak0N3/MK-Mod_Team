@@ -1,28 +1,51 @@
-// 0.4
+// 0.5
 
 var sx, sy, sz;
 var on, tm, tc;
+var md = 0;
 
 function useItem( x , y , z , i , b )
 {
-	if( i == 259 && ( b == 49 || b == 246 ) )
+	if( b == 49 || b == 246 )
 	{
-		preventDefault();
+		if( i == 259 )
+			preventDefault();
 		
-		sx=x; 
-		sy=y; 
-		sz=z; 
+			sx=x; 
+			sy=y; 
+			sz=z; 
 		
-		on = on ? false : true; 
-		if( !on )
+			on = on ? false : true; 
+			if( !on )
+			{
+				setTile( sx , sy , sz , 49 );		
+				
+			}
+			var msg = on ? " " : " 비";
+			
+			print("몹스포너가"+ msg +"활성화되었습니다");
+		}
+		else if( i == 318 )
 		{
-			setTile( sx , sy , sz , 49 );		
+			switch( md )
+			{
+				case 0 :
+					md = 1;
+					print("닭 모드");
+					break;
+				case 1 :
+					md = 2;
+					print("좀피 모드");
+					break;
+				case 2 :
+					md = 0;
+					print("소 모드");
+					break;
+				
+				
+			}
 			
 		}
-		var msg = on ? " " : " 비";
-		
-		print("소 스폰 몹스포너가"+ msg +"활성화되었습니다");
-	}
 }
 
 function modTick()
@@ -68,7 +91,18 @@ function mobSpawner()
 		//{
 			//if(tm < 7 )
 			//{
-				spawnCow( mx , my , mz , 'mob/cow.png' );
+				switch( md )
+			{
+				case 0 :
+					spawnCow( mx , my , mz , 'mob/cow.png' );
+					break;
+				case 1 :
+					spawnChicken( mx , my , mz , 'mob/chicken.png' );
+					break;
+				case 2 :
+					spawnPigZombie( mx , my , mz , 276 , 'mob/char.png' );
+					break;
+				
 				//tm++;
 			//}
 		//}
