@@ -1,4 +1,4 @@
-// 0.3
+// 0.4
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -14,6 +14,11 @@ function useItem( x , y , z , i , b )
 		sz=z; 
 		
 		on = on ? false : true; 
+		if( !on )
+		{
+			setTile( sx , sy , sz , 49 );		
+			
+		}
 		var msg = on ? " " : " 비";
 		
 		print("소 스폰 몹스포너가"+ msg +"활성화되었습니다");
