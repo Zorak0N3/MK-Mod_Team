@@ -140,7 +140,7 @@ function saveData( xyz , list )
 		Ytwo = getNum( parseInt( xyz[1] * 0.1 ) );
 		Ythree = getNum( xyz[1] - ( Ytwo * 10 ) );
 	}
-	else if xyz[1] <= 128 )
+	else if( xyz[1] <= 128 )
 	{
 		Yone = getNum( parseInt( xyz[1] * 0.01 ) ); //256 > 2
 		Ytwo = getNum( parseInt( xyz[1] * 0.1 - Yone * 10 ) ); // 5
