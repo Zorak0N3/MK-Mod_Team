@@ -45,16 +45,16 @@ function procCmd( cmd )
 		{
 			var load = loadData( msg[1] );
 				
-				if( load != null )
-				{
-					setPosition( getPlayerEnt() , load[0] , load[1] , load[2] );
-					print( "\n[Warp]\n워프로 이동하였습니다" );
-				}
-				else
-				{
-					print( "\n[Warp]\n워프가 존재하지 않습니다");
-				}
+			if( load != null )
+			{
+				setPosition( getPlayerEnt() , load[0] , load[1] , load[2] );
+				print( "\n[Warp]\n워프로 이동하였습니다" );
 			}
+			else
+			{
+				print( "\n[Warp]\n워프가 존재하지 않습니다");
+			}
+			
 		}
 	
 }
