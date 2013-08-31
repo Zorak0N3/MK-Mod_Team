@@ -53,7 +53,7 @@ function saveData( xyz , list )
 		Xtwo = getNum( parseInt( xyz[0] * 0.1 ) );
 		Xthree = getNum( xyz[0] - ( Xtwo * 10 ) );
 	}
-	else if xyz[0] <= 256 )
+	else if( xyz[0] <= 256 )
 	{
 		Xone = getNum( parseInt( xyz[0] * 0.01 ) ); //256 > 2
 		Xtwo = getNum( parseInt( xyz[0] * 0.1 - Xone * 10 ) ); // 5
@@ -78,7 +78,7 @@ function saveData( xyz , list )
 		Ytwo = getNum( parseInt( xyz[1] * 0.1 ) );
 		Ythree = getNum( xyz[1] - ( Ytwo * 10 ) );
 	}
-	else if xyz[1] <= 128 )
+	else if( xyz[1] <= 128 )
 	{
 		Yone = getNum( parseInt( xyz[1] * 0.01 ) ); //256 > 2
 		Ytwo = getNum( parseInt( xyz[1] * 0.1 - Yone * 10 ) ); // 5
@@ -103,7 +103,7 @@ function saveData( xyz , list )
 		Ztwo = getNum( parseInt( xyz[2] * 0.1 ) );
 		Zthree = getNum( xyz[2] - ( Ztwo * 10 ) );
 	}
-	else if xyz[2] <= 256 )
+	else if( xyz[2] <= 256 )
 	{
 		Zone = getNum( parseInt( xyz[2] * 0.01 ) ); //256 > 2
 		Ztwo = getNum( parseInt( xyz[2] * 0.1 - Zone * 10 ) ); // 5
@@ -246,5 +246,6 @@ function getNum( nn )
 		
 		default :
 			return 404;
+			
 	}
 }
