@@ -1,7 +1,7 @@
 // Warp Script
 // By Chalk
 // MCPE Korea
-// Version : 0.1
+// Version : 0.2
 
 function newLevel()
 {
@@ -24,7 +24,7 @@ function procCmd( cmd )
 			{
 				if( isNaN( msg[2] ) )
 				{
-					print( "\n[Warp]\n" + msg[2] + " : 워프 번호는 숫자여야 합니다" );
+					print( "\n[Warp]\n워프 번호는 숫자여야 합니다" );
 				}
 				else
 				{
@@ -32,11 +32,11 @@ function procCmd( cmd )
 					
 					if( saveData( pl , msg[2] ) )
 					{
-						print( "\n[Warp]\n" + msg[2] + "번째 워프가 설정되었습니다" );
+						print( "\n[Warp]\n워프가 설정되었습니다" );
 					}
 					else
 					{
-						print( "\n[Warp]\n" + msg[2] + " : 워프를 설정할 수 없습니다");
+						print( "\n[Warp]\n워프를 설정할 수 없습니다");
 					}
 				}
 			}			
@@ -48,11 +48,11 @@ function procCmd( cmd )
 				if( load != null )
 				{
 					setPosition( getPlayerEnt() , load[0] , load[1] , load[2] );
-					print( "\n[Warp]\n" + msg[1] + "번째 워프로 이동하였습니다" );
+					print( "\n[Warp]\n워프로 이동하였습니다" );
 				}
 				else
 				{
-					print( "\n[Warp]\n" + msg[1] + " : 워프가 존재하지 않습니다");
+					print( "\n[Warp]\n워프가 존재하지 않습니다");
 				}
 			}
 		}
