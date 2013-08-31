@@ -1,4 +1,4 @@
-// 0.8
+// 0.9
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -14,9 +14,9 @@ function useItem( x , y , z , i , b )
 			
 			if( sx != x && sy != y && sz != z )
 			{
-				sx=x; 
-				sy=y; 
-				sz=z; 
+				sx = x; 
+				sy = y; 
+				sz = z; 
 				on = true;
 				print("몹스포너가 설정되었습니다");
 			}
@@ -92,21 +92,32 @@ function attackHook( attacker , victim )
 */
 function mobSpawner()
 {
-	var mx = sx + ( Math.random() - Math.random() ) * 4;
-	var my = sy; // -1 0 +1 중 하나이지만 패스
-	var mz = sz + ( Math.random() - Math.random() ) * 4;
+	var xx = Math.abs( getPlayerX() - sx );
+	var yy = Math.abs( getPlayerY() - sy );
+	var zz = Math.abs( getPlayerZ() - sz );
 	
-
-	switch( md )
+	if( xx < 17 && yy < 17 && zz < 17 )
 	{
-		case 0 :
-			spawnCow( mx , my , mz , 'mob/cow.png' );
-			break;
-			
-		case 1 :
-			spawnChicken( mx , my , mz , 'mob/chicken.png' );
-			break;
-			
-	}
+		var mx = sx + ( Math.random() - Math.random() ) * 4;
+		var my = sy; // -1 0 +1 중 하나이지만 패스
+		var mz = sz + ( Math.random() - Math.random() ) * 4;
+		
+	
+		switch( md )
+		{
+			case 0 :
+				spawnCow( mx , my , mz , 'mob/cow.png' );
+				break;
 				
+			case 1 :
+				spawnChicken( mx , my , mz , 'mob/chicken.png' );
+				break;
+				
+		}
+	}
+	else
+	{
+		print("테스트용 문구 - 몹스포너에서 멀리 떨어져 있습니다");
+		
+	}
 }
