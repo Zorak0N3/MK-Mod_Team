@@ -40,8 +40,8 @@ function procCmd( cmd )
 					}
 				}
 			}			
-		} //if nan
-		else // if number
+		}
+		else
 		{
 			var load = loadData( msg[1] );
 				
@@ -56,6 +56,7 @@ function procCmd( cmd )
 			}
 			
 		}
+	}
 	
 }
 
