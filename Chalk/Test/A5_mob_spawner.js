@@ -48,7 +48,7 @@ function useItem( x , y , z , i , b )
 						print("몹스포너를 닭 모드로 설정했습니다");
 						break;
 						
-					case 1
+					case 1 :
 						md = 0;
 						print("몹스포너를 소 모드로 설정했습니다");
 						break;
