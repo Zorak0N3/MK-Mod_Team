@@ -1,4 +1,4 @@
-// 1.2
+// 1.3
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -6,7 +6,7 @@ var md = 0;
 
 function newLevel()
 {
-	print("\n[Mob-Spawner]\nBy Chalk(amato17)\n옵시디언을 라이터로 클릭해 몹스포가 활성화됩니다\n부싯돌로 클릭하면 모드를 변경할 수 있습니다\n몹스포너를 다시 라이터로 클릭하면 비활성화됩니다");
+	print("\n[Mob-Spawner]\nBy Chalk(amato17)\n옵시디언을 라이터로 클릭해 몹스포너가 활성화됩니다\n부싯돌로 클릭하면 모드를 변경할 수 있습니다\n몹스포너를 다시 라이터로 클릭하면 비활성화됩니다");
 }
 
 function useItem( x , y , z , i , b )
