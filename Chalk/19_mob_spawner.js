@@ -1,8 +1,13 @@
-// 1.0
+// 1.1
 
 var sx, sy, sz;
 var on, tm, tc;
 var md = 0;
+
+function newLevel()
+{
+	print("\n[Mob-Spawner]\nBy Chalk(amato17)\n옵시디언을 라이터로 클릭해 몹스포가 활성화됩니다\n몹스포너를 부싯돌로 클릭하면 모드를 변경할 수 있습니다\n몹스포너를 다시 라이터로 클릭하면 비활성화됩니다");
+}
 
 function useItem( x , y , z , i , b )
 {
@@ -18,7 +23,7 @@ function useItem( x , y , z , i , b )
 				sy = y; 
 				sz = z; 
 				on = true;
-				print("몹스포너가 설정되었습니다");
+				print("\n[Mob-Spawner\n몹스포너가 설정되었습니다");
 			}
 			else
 			{
@@ -28,12 +33,12 @@ function useItem( x , y , z , i , b )
 				if( !on )
 				{
 					setTile( sx , sy , sz , 49 );	
-					print("몹스포너가 비활성화되었습니다");
+					print("\n[Mob-Spawner\n몹스포너가 비활성화되었습니다");
 					
 				}
 				else
 				{
-					print("몹스포너가 활성화되었습니다");
+					print("\n[Mob-Spawner\n몹스포너가 활성화되었습니다");
 				}
 			}
 		}
@@ -45,12 +50,12 @@ function useItem( x , y , z , i , b )
 				{
 					case 0 :
 						md = 1;
-						print("몹스포너를 닭 모드로 설정했습니다");
+						print("\n[Mob-Spawner\n몹스포너를 닭 모드로 설정했습니다");
 						break;
 						
 					case 1 :
 						md = 0;
-						print("몹스포너를 소 모드로 설정했습니다");
+						print("\n[Mob-Spawner\n몹스포너를 소 모드로 설정했습니다");
 						break;
 				}
 			}
@@ -90,7 +95,8 @@ function modTick()
 		else
 		{
 			setTile( sx , sy , sz , 49 );
-			tc = 150;
+			tc = Math.floor(Math.random() * 600);
+			// tc = 150;
 	
 			if( xx < 17 && yy < 17 && zz < 17 )
 			{
