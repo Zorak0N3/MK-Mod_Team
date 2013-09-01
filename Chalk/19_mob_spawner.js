@@ -1,4 +1,4 @@
-// 1.1
+// 1.2
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -6,7 +6,7 @@ var md = 0;
 
 function newLevel()
 {
-	print("\n[Mob-Spawner]\nBy Chalk(amato17)\n옵시디언을 라이터로 클릭해 몹스포가 활성화됩니다\n몹스포너를 부싯돌로 클릭하면 모드를 변경할 수 있습니다\n몹스포너를 다시 라이터로 클릭하면 비활성화됩니다");
+	print("\n[Mob-Spawner]\nBy Chalk(amato17)\n옵시디언을 라이터로 클릭해 몹스포가 활성화됩니다\n부싯돌로 클릭하면 모드를 변경할 수 있습니다\n몹스포너를 다시 라이터로 클릭하면 비활성화됩니다");
 }
 
 function useItem( x , y , z , i , b )
@@ -95,7 +95,7 @@ function modTick()
 		else
 		{
 			setTile( sx , sy , sz , 49 );
-			tc = Math.floor(Math.random() * 600);
+			tc = Math.floor( Math.random() * 600 );
 			// tc = 150;
 	
 			if( xx < 17 && yy < 17 && zz < 17 )
@@ -110,7 +110,7 @@ function mobSpawner()
 {
 	
 		var mx = sx + ( Math.random() - Math.random() ) * 4;
-		var my = sy; // -1 0 +1 중 하나이지만 패스
+		var my = sy + Math.floor( Math.random() * 3 ); 
 		var mz = sz + ( Math.random() - Math.random() ) * 4;
 		
 		switch( md )
