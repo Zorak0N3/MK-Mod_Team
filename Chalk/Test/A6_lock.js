@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.6
+ * Version : 0.7
  *
  */
 
@@ -118,6 +118,7 @@ function useItem( x , y , z , i , b )
 		{
 			if( locsta )
 			{
+				preventDefault();
 				if( setLock( x , z , i , false ) )
 				{
 					print( "\n클릭한 블럭을 " + getLock( x , z , false ) + " 열쇠로 잠궜습니다");
@@ -127,6 +128,7 @@ function useItem( x , y , z , i , b )
 			}
 			else if( ulocsta )
 			{
+				preventDefault();
 				if( setLock( x , z , i , true ) )
 				{
 					print( "\n" + getLock( x , z , false ) + " 열쇠로 잠겨있던 블럭을 풀었습니다");
