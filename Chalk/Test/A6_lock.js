@@ -311,6 +311,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "금의";
+			}
 			break;
 	
 		case diam :
