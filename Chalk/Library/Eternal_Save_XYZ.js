@@ -3,14 +3,14 @@
  * 이 주석 아래에 있는 모든 내용을 그대로
  * 라이브러리를 이용할 스크립트에 붙여넣으세요
  *
- * 제작자 : 초크 ( amato17 ) | 버젼 : 0.3 | MCPE Korea Mod Team
+ * 제작자 : 초크 ( amato17 ) | 버젼 : 0.4 | MCPE Korea Mod Team
  *
  * 좌표 배열을 리스트에 저장하는 방법
  *
  * var myLocation = [ parseInt( getPlayerX() ) , parseInt( getPlayerY() ) , parseInt( getPlayerZ() ) ];
  * var isSuccess = saveData( myLocation , 99 );
  * // 99번째 리스트에 myLocation의 값( 플레이어의 현재 위치 )을 저장함
- * // 전달할 배열은 반드시 자연수여야 함
+ * // 전달할 배열과 순서는 반드시 자연수여야 함
  * // saveData() 함수는 성공여부를 반환함
  *
  * 리스트에서 좌표 배열을 불러오는 방법
@@ -21,8 +21,9 @@
  *
  */
 
-function saveData( xyz , list )
+function saveData( xyz , lis )
 {	
+	var list = parseInt( lis );
 	if( list > 100 )
 	{
 		print("\n사용 가능한 리스트의 범위는 0 ~ 99 입니다");
@@ -131,8 +132,9 @@ function saveData( xyz , list )
 	return true;
 }
 
-function loadData( list )
+function loadData( lis )
 {
+	var list = parseInt( lis );
 	if( list > 100 )
 	{
 		print("\n사용 가능한 리스트의 범위는 0 ~ 99 입니다");
