@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.2
+ * Version : 0.3
  *
  */
 
@@ -18,13 +18,13 @@ var brc = 45;
 var brckey = 336; // brick
 
 var iron = 42;
-var ironkey = 265
+var ironkey = 265;
 
 var gold = 41;
-var goldkey = 266
+var goldkey = 266;
 
 var diam = 57;
-var diamkey = 264
+var diamkey = 264;
 
 var qua = 155; // quartz
 var quakey = 406;
