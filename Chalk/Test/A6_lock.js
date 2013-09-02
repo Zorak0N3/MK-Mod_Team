@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.4
+ * Version : 0.5
  *
  */
 
@@ -120,7 +120,7 @@ function useItem( x , y , z , i , b )
 			{
 				if( setLock( x , z , i , false ) )
 				{
-					print( "클릭한 블럭을" + getLock( x , z , false ) + " 열쇠로 잠궜습니다");
+					print( "\n클릭한 블럭을 " + getLock( x , z , false ) + " 열쇠로 잠궜습니다");
 					
 				}
 				locsta = false;
@@ -129,17 +129,18 @@ function useItem( x , y , z , i , b )
 			{
 				if( setLock( x , z , i , true ) )
 				{
-					print( getLock( x , z , false ) + " 열쇠로 잠겨있던 블럭을 풀었습니다");
+					print( "\n" + getLock( x , z , false ) + " 열쇠로 잠겨있던 블럭을 풀었습니다");
 					
 				}
 				ulocsta = false;
 			}
-			else if( checkLock( x , z , i ) )
+			
+		}
+		else if( checkLock( x , z , i ) )
 			{
 				preventDefault();
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 			}
-		}
 	}
 }
 
@@ -402,7 +403,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -424,7 +425,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -447,7 +448,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -469,7 +470,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -491,7 +492,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -513,7 +514,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -535,7 +536,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -557,7 +558,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
