@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.7
+ * Version : 0.8
  *
  */
 
@@ -70,12 +70,12 @@ function procCmd( cmd )
 		
 			if( !locsta )
 			{
-				print("\n잠글 블럭을 열쇠로 클릭해 주세요");
+				print("\n[Lock]\n잠글 블럭을 열쇠로 클릭해 주세요");
 				locsta = true;
 			}
 			else
 			{
-				print("\n잠글 블럭을 열쇠로 클릭해 잠금을 완료하세요");
+				print("\n[Lock]\n잠글 블럭을 열쇠로 클릭해 잠금을 완료하세요");
 			}
 			break;
 			
@@ -83,25 +83,25 @@ function procCmd( cmd )
 		
 			if( !ulocsta )
 			{
-				print("\n잠금을 풀 블럭을 열쇠로 클릭해 주세요");
+				print("\n[Lock]\n잠금을 풀 블럭을 열쇠로 클릭해 주세요");
 				ulocsta = true;
 			}
 			else
 			{
-				print("\n잠금을 풀 블럭을 열쇠로 클릭해 잠금해제를 완료하세요");
+				print("\n[Lock]\n잠금을 풀 블럭을 열쇠로 클릭해 잠금해제를 완료하세요");
 			}
 			break;
 			
 		case help :
 		
-			print("\n/" + lock + " 명령어로 블럭을 잠급니다\n/" + unlock + " 명령어로 블럭의 잠금을 풉니다\n/" + enable + " 명령어로 잠금을 설정합니다");
+			print("\n[Lock]\n/" + lock + " 명령어로 블럭을 잠급니다\n/" + unlock + " 명령어로 블럭의 잠금을 풉니다\n/" + enable + " 명령어로 잠금을 설정합니다");
 			break;
 			
 		case enable :
 		
 			onoff = onoff ? false : true;
 			oomsg = onoff ? " " : " 비"; 
-			print("\n잠금 기능이" + oomsg + "활성화되었습니다");
+			print("\n[Lock]\n잠금 기능이" + oomsg + "활성화되었습니다");
 			break;
 				
 	}
@@ -121,7 +121,7 @@ function useItem( x , y , z , i , b )
 				preventDefault();
 				if( setLock( x , z , i , false ) )
 				{
-					print( "\n클릭한 블럭을 " + getLock( x , z , false ) + " 열쇠로 잠궜습니다");
+					print( "\n[Lock]\n클릭한 블럭을 " + getLock( x , z , false ) + " 열쇠로 잠궜습니다");
 					
 				}
 				locsta = false;
@@ -131,7 +131,7 @@ function useItem( x , y , z , i , b )
 				preventDefault();
 				if( setLock( x , z , i , true ) )
 				{
-					print( "\n" + getLock( x , z , false ) + " 열쇠로 잠겨있던 블럭을 풀었습니다");
+					print( "\n[Lock]\n열쇠로 잠겨있던 블럭을 풀었습니다");
 					
 				}
 				ulocsta = false;
@@ -139,13 +139,13 @@ function useItem( x , y , z , i , b )
 			else if( checkLock( x , z , i ) )
 			{
 				preventDefault();
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 			}
 		}
 		else if( checkLock( x , z , i ) )
 		{
 			preventDefault();
-			print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+			print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 			
 		}
 	}
@@ -410,7 +410,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -432,7 +432,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -455,7 +455,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -477,7 +477,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -499,7 +499,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -521,7 +521,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -543,7 +543,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -565,7 +565,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
+				print("\n[Lock]\n이 블럭은 " + getLock( x , z , false ) + " 열쇠로 잠겨있습니다");
 				return false;
 			}
 			break;
@@ -579,7 +579,7 @@ function setLock( x , z , key , del )
 			}
 			else
 			{
-				print("\n이 아이템은 열쇠로 사용할 수 없습니다");
+				print("\n[Lock]\n이 아이템은 열쇠로 사용할 수 없습니다");
 				return false;
 			}
 			
