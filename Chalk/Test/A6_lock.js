@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.1
+ * Version : 0.2
  *
  */
 
@@ -286,6 +286,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "벽돌의";
+			}
 			break;
 	
 	
@@ -298,6 +299,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "철의";
+			}
 			break;
 	
 		case gold :
@@ -320,6 +322,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "다이아몬드의";
+			}
 			break;
 	
 		case qua:
@@ -331,6 +334,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "석영의";
+			}
 			break;
 	
 		case net :
@@ -342,6 +346,7 @@ function getLock( x , z , bycode )
 			else
 			{
 				return "지옥의";
+			}
 			break;
 	
 		case adm :
