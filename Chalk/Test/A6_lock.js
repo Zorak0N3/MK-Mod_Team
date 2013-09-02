@@ -2,7 +2,7 @@
  * 잠금 스크립트 - Lock Script 
  * By. Chalk - amato17
  * MCPE Korea Mod Team
- * Version : 0.3
+ * Version : 0.4
  *
  */
 
@@ -154,7 +154,7 @@ function checkLock( x , z , key )
 	{
 		case wool :
 		
-			if( i == woolkey || i == admkey )
+			if( key == woolkey || key == admkey )
 			{
 				return false;
 			}
@@ -166,7 +166,7 @@ function checkLock( x , z , key )
 	
 		case brc :
 		
-			if( i == brckey || i == admkey )
+			if( key == brckey || key == admkey )
 			{
 				return false;
 			}
@@ -179,7 +179,7 @@ function checkLock( x , z , key )
 	
 		case iron :
 		
-			if( i == ironkey || i == admkey )
+			if( key == ironkey || key == admkey )
 			{
 				return false;
 			}
@@ -191,7 +191,7 @@ function checkLock( x , z , key )
 	
 		case gold :
 		
-			if( i == goldkey || i == admkey )
+			if( key == goldkey || key == admkey )
 			{
 				return false;
 			}
@@ -203,7 +203,7 @@ function checkLock( x , z , key )
 	
 		case diam :
 		
-			if( i == diamkey || i == admkey )
+			if( key == diamkey || key == admkey )
 			{
 				return false;
 			}
@@ -215,7 +215,7 @@ function checkLock( x , z , key )
 	
 		case qua :
 		
-			if( i == quakey || i == admkey )
+			if( key == quakey || key == admkey )
 			{
 				return false;
 			}
@@ -227,7 +227,7 @@ function checkLock( x , z , key )
 	
 		case net :
 		
-			if( i == netkey || i == admkey )
+			if( key == netkey || key == admkey )
 			{
 				return false;
 			}
@@ -239,7 +239,7 @@ function checkLock( x , z , key )
 	
 		case adm :
 		
-			if( i == admkey )
+			if( key == admkey )
 			{
 				return false;
 			}
