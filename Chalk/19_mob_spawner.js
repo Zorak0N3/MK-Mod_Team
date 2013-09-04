@@ -1,4 +1,4 @@
-// 1.3
+// 1.4
 
 var sx, sy, sz;
 var on, tm, tc;
@@ -23,7 +23,7 @@ function useItem( x , y , z , i , b )
 				sy = y; 
 				sz = z; 
 				on = true;
-				print("\n[Mob-Spawner\n몹스포너가 설정되었습니다");
+				print("\n[Mob-Spawner]\n몹스포너가 설정되었습니다");
 			}
 			else
 			{
@@ -33,12 +33,12 @@ function useItem( x , y , z , i , b )
 				if( !on )
 				{
 					setTile( sx , sy , sz , 49 );	
-					print("\n[Mob-Spawner\n몹스포너가 비활성화되었습니다");
+					print("\n[Mob-Spawner]\n몹스포너가 비활성화되었습니다");
 					
 				}
 				else
 				{
-					print("\n[Mob-Spawner\n몹스포너가 활성화되었습니다");
+					print("\n[Mob-Spawner]\n몹스포너가 활성화되었습니다");
 				}
 			}
 		}
@@ -50,12 +50,12 @@ function useItem( x , y , z , i , b )
 				{
 					case 0 :
 						md = 1;
-						print("\n[Mob-Spawner\n몹스포너를 닭 모드로 설정했습니다");
+						print("\n[Mob-Spawner]\n몹스포너를 닭 모드로 설정했습니다");
 						break;
 						
 					case 1 :
 						md = 0;
-						print("\n[Mob-Spawner\n몹스포너를 소 모드로 설정했습니다");
+						print("\n[Mob-Spawner]\n몹스포너를 소 모드로 설정했습니다");
 						break;
 				}
 			}
@@ -95,7 +95,7 @@ function modTick()
 		else
 		{
 			setTile( sx , sy , sz , 49 );
-			tc = Math.floor( Math.random() * 600 );
+			tc = Math.floor( Math.random() * 300 ); // 20초
 			// tc = 150;
 	
 			if( xx < 17 && yy < 17 && zz < 17 )
@@ -109,9 +109,9 @@ function modTick()
 function mobSpawner()
 {
 	
-		var mx = sx + ( Math.random() - Math.random() ) * 4;
+		var mx = sx + ( Math.random() - Math.random() ) * 8; // 4 ==> 8
 		var my = sy + Math.floor( Math.random() * 3 ); 
-		var mz = sz + ( Math.random() - Math.random() ) * 4;
+		var mz = sz + ( Math.random() - Math.random() ) * 8; // 4 ==> 8
 		
 		switch( md )
 		{
