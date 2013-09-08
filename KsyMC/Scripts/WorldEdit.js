@@ -72,19 +72,19 @@ function useItem(x, y, z, item, block){
 			selection1[1] = Math.round(y);
 			selection1[2] = Math.round(z);
 			
-			clientMessage("첫번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
+			clientMessage("첫번째 선택 완료 (X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
 		}else if(!select_second){
 			select_second = true;
 			selection2[0] = Math.round(x);
 			selection2[1] = Math.round(y);
 			selection2[2] = Math.round(z);
 			
-			clientMessage("두번째 선택 완료.\n(X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
+			clientMessage("두번째 선택 완료 (X : " + selection1[0] + " Y : " + selection1[1] + " Z : " + selection1[2] + ")");
 		}else{
 			select_first = false;
 			select_second = false;
 			
-			clientMessage("선택 지점이 초기화 되었습니다.\n다시 선택해 주세요.");
+			clientMessage("선택 지점이 초기화 되었습니다. 다시 선택해 주세요.");
 		}
 	}
 }
