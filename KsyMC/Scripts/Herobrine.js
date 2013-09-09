@@ -40,7 +40,7 @@ function modTick(){
 		HB = bl_spawnMob(getPlayerX() - 2, getPlayerY(), getPlayerZ(), 32, "mob/char.png");
 		clientMessage("HI!");
 		
-		startTimer(5/20, "Herobrine remove");
+		startTimer(5*20, "Herobrine remove");
 	}
 	
 	if(TimerEnd){
