@@ -7,6 +7,8 @@ var TimerEnd = false;
 var Timer_time = 0;
 var Timer_tag = "";
 
+var DEBUG = false;
+
 function useItem(x, y, z, item, block, side){
 	if(checkHB_Block(x, y - 3, z)){
 		preventDefault();
@@ -22,14 +24,19 @@ function attackHook(player, victim){
 	if(HB != null && Entity.getYaw(victim) == Entity.getYaw(HB)){
 		attackCount++;
 		
-		if(getCarriedItem() == 267 && attackCount != 3) return; // 철
-		else if(getCarriedItem() == 268 && attackCount != 3) return; // 나무
-		else if(getCarriedItem() == 272 && attackCount != 2) return; // 돌
-		else if(getCarriedItem() == 283 && attackCount != 2) return; // 금
+		if(DEBUG) clientMessage("<DEBUG> 히로빈에게 공격 (아이템 " + getCarriedItem() + ") : " + attackCount);
+		
+		if(getCarriedItem() == 268 && attackCount != 4) return; // 나무
+		else if(getCarriedItem() == 272 && attackCount != 3) return; // 돌
+		else if(getCarriedItem() == 267 && attackCount != 3) return; // 철
+		else if(getCarriedItem() == 283 && attackCount != 1) return; // 금
 		else if(getCarriedItem() == 276 && attackCount != 1) return; // 다이아
+		else if(attackCount < 8) return;
 		
 		removeHB();
 		attackCount = 0;
+		
+		if(DEBUG) clientMessage("<DEBUG> 히로빈 삭제됨 (이유 : 히로빈 보호)");
 	}
 }
 
@@ -73,8 +80,12 @@ function modTick(){
 				break;
 		}
 		
-		HB = bl_spawnMob(getPlayerX() - 2, getPlayerY(), getPlayerZ(), 32, "mob/char.png");
+		var spawnPos = [getRandom(Math.floor(getPlayerX()) - 3, Math.floor(getPlayerX()) + 3), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 3, Math.floor(getPlayerZ()) + 3)];
+		
+		HB = bl_spawnMob(spawnPos[0], spawnPos[1], spawnPos[2], 36, "mob/char.png");
 		startTimer(getRandom(5, 9), "HB_remove");
+		
+		if(DEBUG) clientMessage("<DEBUG> 히로빈 소환(X " + spawnPos[0] + ", Y " + spawnPos[1] + ", Z " + spawnPos[2] + ").");
 	}
 	
 	// 타이머 종료 처리
@@ -82,8 +93,25 @@ function modTick(){
 		switch(getTimerTag()){
 			case "HB_remove":
 				removeHB();
+				
+				if(DEBUG) clientMessage("<DEBUG> 히로빈 삭제됨 (이유 : 타이머)");
 				break;
 		}
+	}
+}
+
+function procCmd(cmd){
+	var arg = cmd.split(" ");
+	
+	switch(arg[0]){
+		case "herobrine":
+			if(arg[1] == "debug"){
+				if(!DEBUG) DEBUG = true;
+				else DEBUG = false;
+				
+				clientMessage("<Herobrine> 디버그 모드가 설정되었습니다");
+			}
+			break;
 	}
 }
 
@@ -97,6 +125,7 @@ function leaveGame(){
 	block_HB = [];
 	HB = null;
 	spawnCount = 0;
+	attackCount = 0;
 }
 
 function removeHB(){
@@ -104,6 +133,7 @@ function removeHB(){
 	
 	setPosition(HB, 0, -100, 0);
 	HB = null;
+	attackCount = 0;
 }
 
 function checkHB_Block(floorX, floorY, floorZ){
@@ -120,11 +150,16 @@ function setHB_block(floorX, floorY, floorZ){
 }
 
 function HB_attackFire(){
-	setTile(getPlayerX() + 2, getPlayerY() - 1 , getPlayerZ(), 51);
-	setTile(getPlayerX(), getPlayerY() - 1, getPlayerZ() + 5, 51);
-	setTile(getPlayerX(), getPlayerY() - 1, getPlayerZ(), 51);
-	setTile(getPlayerX() + 5, getPlayerY() - 1, getPlayerZ() + 1, 51);
-	setTile(getPlayerX() + 1, getPlayerY() - 1, getPlayerZ(), 51);
+	var pos1 = getFloor(getPlayerX(), getPlayerY(), getPlayerZ());
+	var pos2 = getFloor(getPlayerX() + 2, getPlayerY(), getPlayerZ());
+	var pos3 = getFloor(getPlayerX(), getPlayerY(), getPlayerZ() + 5);
+	var pos4 = getFloor(getPlayerX() + 1, getPlayerY(), getPlayerZ() + 2);
+	
+	setTile(pos1[0], pos1[1] + 1, pos1[2], 51);
+	setTile(pos2[0], pos2[1] + 1, pos2[2], 51);
+	setTile(pos3[0], pos3[1] + 1, pos3[2], 51);
+	setTile(pos4[0], pos4[1] + 1, pos4[2], 51);
+	
 	explode(getPlayerX(), getPlayerY(), getPlayerZ(), 0.01);
 }
 
@@ -153,6 +188,15 @@ function getTimerTag(){
 
 function getRandom(start, end){
 	return parseInt(Math.random() * (end - start)) + start;
+}
+
+function getFloor(x, y, z){
+	for(var i = y; y >= 0; i--){
+		if((getTile(x, i, z) != 0 && getTile(x, i, z) != 78 && getTile(x, i, z) != 83) || (getTile(x, i + 1, z) == 78 || getTile(x, i + 1, z) == 83)){
+			return new Array(x, i, z);
+		}
+	}
+	return false;
 }
 
 function getSide(x, y, z, side){
