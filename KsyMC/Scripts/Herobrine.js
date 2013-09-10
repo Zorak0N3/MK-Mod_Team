@@ -1,6 +1,7 @@
 var block_HB = [];
 var HB = null;
 var spawnCount = 0;
+var attackCount = 0;
 
 var TimerEnd = false;
 var Timer_time = 0;
@@ -17,8 +18,19 @@ function useItem(x, y, z, item, block, side){
 	}
 }
 
-function attackHook(attacker, victim){
-	if(spawnCount > 4 && victim.getYaw(victim) == HB.getYaw(HB)) setVelY(attacker, 1);
+function attackHook(player, victim){
+	if(HB != null && Entity.getYaw(victim) == Entity.getYaw(HB)){
+		attackCount++;
+		
+		if(getCarriedItem() == 267 && attackCount != 3) return; // 철
+		else if(getCarriedItem() == 268 && attackCount != 3) return; // 나무
+		else if(getCarriedItem() == 272 && attackCount != 2) return; // 돌
+		else if(getCarriedItem() == 283 && attackCount != 2) return; // 금
+		else if(getCarriedItem() == 276 && attackCount != 1) return; // 다이아
+		
+		removeHB();
+		attackCount = 0;
+	}
 }
 
 function modTick(){
@@ -62,7 +74,7 @@ function modTick(){
 		}
 		
 		HB = bl_spawnMob(getPlayerX() - 2, getPlayerY(), getPlayerZ(), 32, "mob/char.png");
-		startTimer(getRandom(3, 7), "HB_remove");
+		startTimer(getRandom(5, 9), "HB_remove");
 	}
 	
 	// 타이머 종료 처리
@@ -80,12 +92,16 @@ function newLevel(){
 }
 
 function leaveGame(){
+	if(HB != null) removeHB();
+	
 	block_HB = [];
 	HB = null;
 	spawnCount = 0;
 }
 
 function removeHB(){
+	if(HB == null) return;
+	
 	setPosition(HB, 0, -100, 0);
 	HB = null;
 }
