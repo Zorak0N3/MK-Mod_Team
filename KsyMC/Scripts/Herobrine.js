@@ -24,7 +24,7 @@ function useItem(x, y, z, item, block, side){
 		HB_setblock(x, y - 3, z); // 바닥 부분을 저장
 	}
 	
-	if(g_HB == null && block == 26/* && g_spawnCount > 10 && getRandom(0, 100) == 70*/){ // 침대
+	if(g_HB == null && block == 26 && g_spawnCount > 10 && getRandom(0, 100) == 70){ // 침대
 		g_HB_spawn = false;
 		startTimer(4.9, "Check_bed");
 	}
