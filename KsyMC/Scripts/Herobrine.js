@@ -19,6 +19,8 @@ function useItem(x, y, z, item, block, side){
 		clientMessage("You don't know what you did....");
 		HB_setblock(x, y - 3, z); // 바닥 부분을 저장
 	}
+	
+	//if(block == 26) clientMessage("You don't know what you did....");
 }
 
 function attackHook(player, victim){
@@ -93,7 +95,7 @@ function procCmd(cmd){
 				
 				clientMessage("<Herobrine> 디버그 모드가 설정되었습니다");
 			}else{
-				clientMessage("<Herobrine> Version 1.0 Beta");
+				clientMessage("<Herobrine> Version 1.5 Beta 3");
 				clientMessage("<Herobrine> Made by KsyMC");
 			}
 			break;
@@ -101,7 +103,7 @@ function procCmd(cmd){
 }
 
 function newLevel(hasLevel){
-	print("\nHerobrine 1.0 Beta By 제조일자");
+	print("\nHerobrine 1.5 Beta 3 By 제조일자");
 }
 
 function leaveGame(){
