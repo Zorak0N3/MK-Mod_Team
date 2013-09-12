@@ -27,6 +27,8 @@ function useItem(x, y, z, item, block, side){
 	if(g_HB == null && block == 26 && g_spawnCount > 10 && getRandom(0, 10) == 7){ // 침대
 		g_HB_spawn = false;
 		startTimer(4.9, "Check_bed");
+		
+		if(DEBUG) clientMessage("<DEBUG> 악몽 확률 통과, 침대에 누워있는지 체크중");
 	}
 }
 
@@ -151,10 +153,10 @@ function timerEndHandler(tag){
 	}
 }
 
-function HB_attackedByPlayer(player){
-	if(DEBUG) clientMessage("<DEBUG> 플레이어가 아이템 " + getCarriedItem() + "으로 히로빈 공격. (체력 :" + g_HB_health + ")");
-	
+function HB_attackedByPlayer(player){	
 	g_HB_health -= getWeaponDamage(getCarriedItem());
+	
+	if(DEBUG) clientMessage("<DEBUG> 플레이어가 아이템 " + getCarriedItem() + "으로 히로빈 공격. (체력 :" + g_HB_health + ")");
 }
 
 function HB_spawn(){
