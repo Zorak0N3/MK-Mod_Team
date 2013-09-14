@@ -15,30 +15,74 @@ var g_dataLoaded = false; // 데이터가 불러와졌는지
 var DEBUG = false; // 디버그 모드인지
 
 function saveData(){ // 데이터 저장하기
-	var spawnCount = NumToBlock(g_spawnCount);
-	for(var x = 0; x < spawnCount.length; x++){
-		setTile(x, 0, 0, spawnCount[x]);
+	if(g_dataLoaded){
+		var spawnCount = NumToBlock(g_spawnCount);
+		for(var sc = 0; sc < spawnCount.length; sc++){
+			setTile(sc, 0, 0, spawnCount[sc]);
+		}
+		setTile(spawnCount.length, 0, 0, 41);
+		
+		setTile(0, 1, 0, 57); // 버전 저장
+		
+		
+		if(g_HB_block.length != 0){
+			var blockX = NumToBlock(g_HB_block[0]);
+			var blockY = NumToBlock(g_HB_block[1]);
+			var blockZ = NumToBlock(g_HB_block[2]);
+			
+			for(var bx = 0; bx < blockX.length; bx++){
+				setTile(bx, 0, 1, blockX[bx]);
+			}
+			
+			for(var by = 0; by < blockY.length; by++){
+				setTile(by, 0, 2, blockY[by]);
+			}
+			
+			for(var bz = 0; bz < blockZ.length; bz++){
+				setTile(bz, 0, 3, blockZ[bz]);
+			}
+			setTile(blockX.length, 0, 1, 41);
+			setTile(blockY.length, 0, 2, 41);
+			setTile(blockZ.length, 0, 3, 41);
+		}else{
+			setTile(0, 0, 1, 41);
+			setTile(0, 0, 2, 41);
+			setTile(0, 0, 3, 41);
+		}
 	}
-	setTile(spawnCount.length, 0, 0, 41);
-	
-	setTile(0, 1, 0, 57); // 버전 저장
 }
 
 function loadData(){ // 데이터 불러오기
 	if(!g_dataLoaded){
-		g_dataLoaded = true;
-		
-		if(getTile(0, 1, 0) != 57) return; // 스크립트를 한번 이상 사용 체크
-		
-		var spawnCount = [];
-		
-		for(var x = 0; getTile(x, 0, 0) != 41; x++){
-			spawnCount[x] = getTile(x, 0, 0);
+		if(getTile(0, 1, 0) == 57){ // 스크립트를 한번 이상 사용 체크
+			var spawnCount = [];
+			
+			for(var sc = 0; getTile(sc, 0, 0) != 41; sc++){
+				spawnCount[sc] = getTile(sc, 0, 0);
+			}
+			g_spawnCount = BlockToNum(spawnCount);
+			
+			
+			var blockX = [], blockY = [], blockZ = [];
+			
+			for(var bx = 0; getTile(bx, 0, 1) != 41; bx++){
+				blockX[bx] = getTile(bx, 0, 1);
+			}
+			
+			for(var by = 0; getTile(by, 0, 2) != 41; by++){
+				blockY[by] = getTile(by, 0, 2);
+			}
+			
+			for(var bz = 0; getTile(bz, 0, 3) != 41; bz++){
+				blockZ[bz] = getTile(bz, 0, 3);
+			}
+			g_HB_block = [BlockToNum(blockX), BlockToNum(blockY), BlockToNum(blockZ)];
+			
+			if(DEBUG) clientMessage("<DEBUG> Data has been loaded.");
+			if(DEBUG) clientMessage("<DEBUG> [Data] SpawnCount = " + g_spawnCount + "");
+			if(DEBUG) clientMessage("<DEBUG> [Data] HB_block = " + g_HB_block + "");
 		}
-		g_spawnCount = BlockToNum(spawnCount);
-		
-		if(DEBUG) clientMessage("<DEBUG> Data has been loaded.");
-		if(DEBUG) clientMessage("<DEBUG> SpawnCount = " + g_spawnCount + "");
+		g_dataLoaded = true;
 	}
 }
 
@@ -57,6 +101,8 @@ function newLevel(hasLevel){ // 게임이 시작됬을때
 
 function leaveGame(){ // 게임이 종료됬을때
 	if(g_HB != null) HB_remove();
+	
+	stopTimer();
 }
 
 function useItem(x, y, z, item, block, side){ // 아이템으로 터치했을때
@@ -256,6 +302,8 @@ function HB_setblock(floorX, floorY, floorZ){ // [히로빈] 구조물 설정
 	g_HB_block = [floorX, floorY, floorZ];
 	setTile(floorX, floorY + 4, floorZ, 51);
 	explode(floorX, floorY + 5, floorZ, 0.01);
+	
+	if(DEBUG) clientMessage("<DEBUG> Set blocks position. (X " + floorX + ", Y " + floorY + ", Z " + floorZ + ")");
 }
 
 function HB_attackedByPlayer(player){ // [히로빈] 플레이어가 공격
@@ -373,7 +421,8 @@ function NumToBlock(num){ // 숫자를 적절한 블록으로 변환
 	else num = num.toString().split("");
 	
 	for(var i = 0; i < num.length; i++){
-		if(num[i] >= 0 && num[i] <= 5) block[i] = num[i];
+		if(num[i] == 0) block[i] = 17;
+		else if(num[i] >= 1 && num[i] <= 5) block[i] = Number(num[i]);
 		else if(num[i] == 6) block[i] = 7;
 		else if(num[i] == 7) block[i] = 14;
 		else if(num[i] == 8) block[i] = 15;
@@ -384,20 +433,21 @@ function NumToBlock(num){ // 숫자를 적절한 블록으로 변환
 }
 
 function BlockToNum(block){ // 변환한 블록을 숫자로 변환
-	if(block >= 17 || block == 6) return false;
+	if(block == 6 || block >= 18) return false;
 	
 	var num = [];
 	if(block.length == 1) block = [block];
 	
 	for(var i = 0; i < block.length; i++){
-		if(block[i] >= 0 && block[i] <= 5) num[i] = block[i];
+		if(block[i] == 17) num[i] = 0;
+		else if(block[i] >= 1 && block[i] <= 5) num[i] = block[i];
 		else if(block[i] == 7) num[i] = 6;
 		else if(block[i] == 14) num[i] = 7;
 		else if(block[i] == 15) num[i] = 8;
 		else if(block[i] == 16) num[i] = 9;
 	}
 	
-	return num.join("");
+	return Number(num.join(""));
 }
 
 function getFloor(x, y, z, fromRoof){ // 인자로 받은 위치에서 바닥을 구하기
