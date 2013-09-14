@@ -43,7 +43,7 @@ function loadData(){ // 데이터 불러오기
 }
 
 function newLevel(hasLevel){ // 게임이 시작됬을때
-	print("\nHerobrine 1.5 Beta 3 By KsyMC");
+	print("\nHerobrine 1.5 Beta 5 By KsyMC");
 	
 	g_HB_block = [];
 	g_HB = null;
@@ -101,7 +101,7 @@ function procCmd(cmd){ // 명령어
 				
 				clientMessage("<Herobrine> Debug");
 			}else{
-				clientMessage("<Herobrine> Version 1.5 Beta 3");
+				clientMessage("<Herobrine> Version 1.5 Beta 5");
 				clientMessage("<Herobrine> Made by KsyMC");
 			}
 			break;
