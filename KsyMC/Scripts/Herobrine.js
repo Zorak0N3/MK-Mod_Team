@@ -303,7 +303,7 @@ function startTimer(sec, tag){ // 타이머 설정
 }
 
 function stopTimer(){
-	if(DEBUG) clientMessage("<DEBUG> Stop Timer (tag " + g_Timer_tag + ")");
+	if(DEBUG) clientMessage("<DEBUG> Stop Timer " + getTimerTag() == "" ? "" : ("(" + getTimerTag() + ")"));
 	
 	g_Timer_end = false;
 	g_Timer_time = -1;
