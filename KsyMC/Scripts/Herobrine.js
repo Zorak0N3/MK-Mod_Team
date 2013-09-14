@@ -71,7 +71,7 @@ function useItem(x, y, z, item, block, side){ // 아이템으로 터치했을때
 	}
 	
 	if(block == 26){ // 침대
-		if(g_HB == null && g_spawnCount > 10 && getRandom(0, 5) == 1){
+		if(g_HB == null && g_spawnCount > 10 && getRandom(0, 100) < 50){
 			g_HB_spawn = false;
 			startTimer(4.9, "Check_bed");
 			
@@ -145,7 +145,7 @@ function modTick(){ // 실시간 체크 함수
 		g_HB_block = [];
 	}
 	
-	if(g_HB == null && getRandom(0, 1000) == 700 && g_HB_spawn){ // 스폰
+	if(g_HB == null && getRandom(0, 1000) == getRandom(0, 1000) && g_HB_spawn){ // 소환
 		HB_spawn();
 	}
 	
@@ -182,11 +182,11 @@ function timerEndHandler(tag){ // 타이머 종료 핸들러
 			}
 			break;
 		case "Start_dream":
-			var pos = HB_buildDream();
+			var data = HB_buildDream();
 			
 			g_Player_dream = true;
-			setPosition(getPlayerEnt(), pos[0], pos[1], pos[2]);
-			startTimer(20, "End_dream");
+			setPosition(getPlayerEnt(), data[0], data[1], data[2]);
+			startTimer(data[3], "End_dream");
 			
 			if(DEBUG) clientMessage("<DEBUG> The dream started.");
 			break;
@@ -265,21 +265,43 @@ function HB_attackedByPlayer(player){ // [히로빈] 플레이어가 공격
 }
 
 function HB_buildDream(){ // [히로빈] 악몽 건축물 생성
-	var count = 0;
-	
-	count += W_set(48, [0, 100, 0], [20, 108, 7]);
-	count += W_set(0, [1, 101, 1], [19, 107, 6]);
-	count += W_set(89, [1, 108, 3], [19, 108, 4]);
+	var count = 0, pos = [];
+	if(getRandom(0, 100) < 40){
+		count += W_set(48, [0, 99, 0], [21, 109, 8]);
+		count -= W_set(0, [1, 101, 1], [19, 107, 6]);
+		W_set(89, [1, 108, 3], [19, 108, 4]);
+		
+		count++;
+		setTile(19, 101, 4, 51);
+		
+		pos = [1.5, 103, 4.5, 10];
+	}else if(getRandom(0, 100) < 40){
+		count += W_set(7, [0, 100, 0], [5, 108, 5]);
+		count -= W_set(0, [1, 101, 1], [4, 107, 4]);
+		count += W_set(10, [1, 101, 1], [4, 105, 4]);
+		
+		setTile(3, 108, 3, 89);
+		
+		pos = [3.5, 107, 3.5, 1.5];
+	}else{
+		pos = [128, 125, 128, 2];
+	}/*else if(getRandom(0, 100) < 10){
+		
+	}else if(getRandom(0, 100) < 10){
+		
+	}else if(getRandom(0, 100) < 10){
+		
+	}*/
 	
 	if(DEBUG) clientMessage("<DEBUG> [Dream] " + count + " blocks have been created.");
 	
-	return [1.5, 103, 4.5];
+	return pos;
 }
 
 function HB_deleteDream(){ // [히로빈] 악몽 건축물 삭제
 	var count = 0;
 	
-	count += W_set(0, [0, 100, 0], [20, 108, 7]);
+	count += W_set(0, [0, 95, 0], [35, 130, 35]);
 	
 	if(DEBUG) clientMessage("<DEBUG> [Dream] " + count + " blocks have been removed.");
 }
@@ -302,7 +324,7 @@ function startTimer(sec, tag){ // 타이머 설정
 	if(DEBUG) clientMessage("<DEBUG> Timer set (" + g_Timer_time / 20 + "sec, tag " + g_Timer_tag + ")");
 }
 
-function stopTimer(){
+function stopTimer(){ // 타이머 중지
 	if(DEBUG) clientMessage("<DEBUG> Stop Timer " + (getTimerTag() == "" ? "" : ("(" + getTimerTag() + ")")));
 	
 	g_Timer_end = false;
@@ -435,8 +457,10 @@ function W_set(block, selection1, selection2){ // 월드에딧
 	for(var x = startX; x <= endX; x++){
 		for(var y = startY; y <= endY; y++){
 			for(var z = startZ; z <= endZ; z++){
+				var after = getTile(x, y, z);
 				setTile(x, y, z, block);
-				count++;
+				
+				if(after != block) count++;
 			}
 		}
 	}
