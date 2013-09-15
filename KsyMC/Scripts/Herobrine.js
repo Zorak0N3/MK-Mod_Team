@@ -253,6 +253,12 @@ function HB_spawn(){ // [히로빈] 소환
 	if(!g_HB_spawn) return false;
 	
 	var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 3, Math.floor(getPlayerX()) + 3), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 3, Math.floor(getPlayerZ()) + 3), true);
+	if(getTile(pos[0], pos[1] + 1, pos[2]) != 0 || getTile(pos[0], pos[1] + 2, pos[2]) != 0){
+		if(DEBUG) clientMessage("<DEBUG> Herobrine summons was canceled.");
+		
+		return false;
+	}
+	
 	var time = 3;
 	
 	switch(g_spawnCount){
@@ -280,6 +286,8 @@ function HB_spawn(){ // [히로빈] 소환
 	
 	if(DEBUG) clientMessage("<DEBUG> Herobrine has been summoned.");
 	if(DEBUG) clientMessage(" (Time " + time + ", Count " + g_spawnCount + ", X " + pos[0] + ", Y " + (pos[1] + 1) + ", Z " + pos[2] + ")");
+	
+	return true;
 }
 
 function HB_remove(){ // [히로빈] 삭제
@@ -460,7 +468,6 @@ function getFloor(x, y, z, fromRoof){ // 인자로 받은 위치에서 바닥을
 	}
 	
 	for(var i = y; i >= 0; i--){
-		
 		if(getTile(x, i, z) != 0 && getTile(x, i, z) != 78 && getTile(x, i, z) != 83 && getTile(x, i, z) != 50 && getTile(x, i, z) != 51){
 			return [x, i, z];
 		}
