@@ -199,16 +199,16 @@ function modTick(){ // 실시간 체크 함수
 	// 히로빈이 스폰 되어 있을때 //
 	if(g_HB == null) return;
 	
-	if(g_HB_health <= getWeaponDamage(getCarriedItem())){ // 보호
-		HB_remove();
-		
-		if(DEBUG) clientMessage("<DEBUG> Protect Herobrine");
-	}
-	
 	if(Entity.getYaw(g_HB) == 0){
 		HB_remove();
 		
 		if(DEBUG) clientMessage("<DEBUG> Herobrine is dead!");
+	}
+	
+	if(g_HB_health <= getWeaponDamage(getCarriedItem())){ // 보호
+		HB_remove();
+		
+		if(DEBUG) clientMessage("<DEBUG> Protect Herobrine");
 	}
 }
 
