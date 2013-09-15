@@ -13,7 +13,7 @@ var g_Timer_tag = "";
 
 var g_dataLoaded = false; // 데이터가 불러와졌는지
 var DEBUG = false; // 디버그 모드인지
-var VERSION = "Herobrine 1.5 Beta 6";
+var VERSION = "Herobrine 1.5";
 
 function saveData(){ // 데이터 저장하기
 	if(g_dataLoaded){
