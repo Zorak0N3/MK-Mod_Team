@@ -253,23 +253,22 @@ function HB_spawn(){ // [히로빈] 소환
 	if(!g_HB_spawn) return false;
 	
 	var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 3, Math.floor(getPlayerX()) + 3), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 3, Math.floor(getPlayerZ()) + 3), true);
+	var time = 3;
 	
 	switch(g_spawnCount){
 		case 0:
 			clientMessage("HI!");
 			break;
-		case 1:
-			clientMessage("!nileppeZ deL ot netsiL");
-			break;
 		case 4:
 			clientMessage("?mA I erehW");
-			HB_attackFire();
 			break;
-		case 6:
+		case 10:
 			HB_attackFire();
+			time = 5;
 			break;
-		default:
-			clientMessage("!lleh ot emoclew");
+		case 20:
+			HB_attackFire();
+			clientMessage("!nileppeZ deL ot netsiL");
 			break;
 	}
 	
@@ -277,10 +276,10 @@ function HB_spawn(){ // [히로빈] 소환
 	
 	g_HB = spawnPigZombie(pos[0], pos[1] + 1, pos[2], 276, "mob/char.png");
 	g_HB_health = 20;
-	startTimer(10, "HB_remove");
+	startTimer(time, "HB_remove");
 	
 	if(DEBUG) clientMessage("<DEBUG> Herobrine has been summoned.");
-	if(DEBUG) clientMessage(" (Count " + g_spawnCount + ", X " + pos[0] + ", Y " + (pos[1] + 1) + ", Z " + pos[2] + ")");
+	if(DEBUG) clientMessage(" (Time " + time + ", Count " + g_spawnCount + ", X " + pos[0] + ", Y " + (pos[1] + 1) + ", Z " + pos[2] + ")");
 }
 
 function HB_remove(){ // [히로빈] 삭제
