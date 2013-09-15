@@ -118,7 +118,7 @@ function useItem(x, y, z, item, block, side){ // 아이템으로 터치했을때
 	}
 	
 	if(block == 26){// 침대
-		g_bedPos = [Math.floor(getPlayerX()), Math.floor(getPlayerY()), Math.floor(getPlayerZ())];
+		g_bedPos = [getPlayerX(), getPlayerY(), getPlayerZ()];
 		
 		if(g_HB == null && g_spawnCount > 10 && getRandom(0, 100) < 50){
 			g_HB_spawn = false;
