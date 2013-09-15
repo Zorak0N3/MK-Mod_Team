@@ -13,6 +13,7 @@ var g_Timer_tag = "";
 
 var g_dataLoaded = false; // 데이터가 불러와졌는지
 var DEBUG = false; // 디버그 모드인지
+var VERSION = "Herobrine 1.5 Beta 5";
 
 function saveData(){ // 데이터 저장하기
 	if(g_dataLoaded){
@@ -87,7 +88,7 @@ function loadData(){ // 데이터 불러오기
 }
 
 function newLevel(hasLevel){ // 게임이 시작됬을때
-	print("\nHerobrine 1.5 Beta 5 By KsyMC");
+	print("\n" + VERSION + " By KsyMC");
 	
 	g_HB_block = [];
 	g_HB = null;
@@ -147,7 +148,7 @@ function procCmd(cmd){ // 명령어
 				
 				clientMessage("<Herobrine> Debug");
 			}else{
-				clientMessage("<Herobrine> Version 1.5 Beta 5");
+				clientMessage("<Herobrine> Version :" + VERSION);
 				clientMessage("<Herobrine> Made by KsyMC");
 			}
 			break;
