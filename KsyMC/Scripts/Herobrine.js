@@ -117,7 +117,9 @@ function useItem(x, y, z, item, block, side){ // 아이템으로 터치했을때
 		HB_setblock(x, y - 3, z); // 바닥 부분을 저장
 	}
 	
-	if(block == 26){ // 침대
+	if(block == 26){// 침대
+		g_bedPos = [Math.floor(getPlayerX()), Math.floor(getPlayerY()), Math.floor(getPlayerZ())];
+		
 		if(g_HB == null && g_spawnCount > 10 && getRandom(0, 100) < 50){
 			g_HB_spawn = false;
 			startTimer(4.9, "Check_bed");
@@ -222,14 +224,13 @@ function timerEndHandler(tag){ // 타이머 종료 핸들러
 			break;
 		case "HB_remove_checkDead":
 			HB_remove();
-			if(getYaw() == 0) clientMessage("Argh! I'll come back!");
+			if(getYaw() != 0) clientMessage("Argh! I'll come back!");
 			
 			if(DEBUG) clientMessage("<DEBUG> Herobrine has been deleted automatically.");
 			break;
 		case "Check_bed":
 			if(getTile(getPlayerX(), getPlayerY(), getPlayerZ()) == 26){
 				startTimer(0.1, "Start_dream");
-				g_bedPos = [Math.floor(getPlayerX()), Math.floor(getPlayerY()), Math.floor(getPlayerZ())];
 			}else{
 				g_HB_spawn = true;
 			}
@@ -272,6 +273,8 @@ function HB_spawn(){ // [히로빈] 소환
 	}else{
 		switch(getRandom(0, 10)){
 			case 0:
+				if(HB_attackHouse()) break;
+				
 				clientMessage("!enirboreH ma I");
 				break;
 			case 1:
@@ -289,6 +292,15 @@ function HB_spawn(){ // [히로빈] 소환
 			case 4:
 				HB_attackFire(20);
 				clientMessage("!nileppeZ deL ot netsiL");
+				break;
+			case 5:
+				HB_attackZombie(20);
+				time = 4;
+				checkPlayerDead = true;
+				break;
+			case 6:
+				HB_attackZombie(5);
+				HB_attackFire(5);
 				break;
 		}
 	}
@@ -357,7 +369,7 @@ function HB_buildDream(){ // [히로빈] 악몽 건축물 생성
 		
 		pos = [3.5, 107, 3.5, 1.5];
 	}else{
-		pos = [128, 125, 128, 2];
+		pos = [128, 300, 128, 2];
 	}/*else if(getRandom(0, 100) < 10){
 		
 	}else if(getRandom(0, 100) < 10){
@@ -383,15 +395,37 @@ function HB_attackFire(num){ // [히로빈] 불로 공격
 	if(num === NaN) num = 5;
 	
 	for(var i = 0; i < num; i++){	
-		var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 3, Math.floor(getPlayerX()) + 3), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 3, Math.floor(getPlayerZ()) + 3), true);
+		var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 5, Math.floor(getPlayerX()) + 5), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 5, Math.floor(getPlayerZ()) + 5), true);
 		setTile(pos[0], pos[1] + 1, pos[2], 51);
 	}
 	
 	explode(getPlayerX(), getPlayerY(), getPlayerZ(), 0.01);
 }
 
-function HB_attackAir(){
+function HB_attackAir(){ // [히로빈] 위로 올려 공격
 	setVelY(getPlayerEnt(), 2);
+}
+
+function HB_attackZombie(num){ // [히로빈] 좀비 공격
+	if(num === NaN) num = 10;
+	
+	for(var i = 0; i < num; i++){	
+		var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 10, Math.floor(getPlayerX()) + 10), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 10, Math.floor(getPlayerZ()) + 10), true);
+		if(getTile(pos[0], pos[1] + 1, pos[2]) != 0 || getTile(pos[0], pos[1] + 2, pos[2]) != 0) continue;
+		
+		bl_spawnMob(pos[0], pos[1] + 1, pos[2], 32, "mobs/zombie.png");
+	}
+}
+
+function HB_attackHouse(){
+	if(g_bedPos.length != 0){
+		for(var i = 0; i < 20; i++){
+			var pos = [getRandom(g_bedPos[0] - 10, g_bedPos[0] + 10), g_bedPos[1], getRandom(g_bedPos[2] - 10, g_bedPos[2] + 10)];
+			setTile(pos[0], pos[1], pos[2], 51);
+		}
+		return true;
+	}
+	return false;
 }
 
 function startTimer(sec, tag){ // 타이머 설정
