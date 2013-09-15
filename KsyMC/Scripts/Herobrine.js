@@ -220,6 +220,12 @@ function timerEndHandler(tag){ // 타이머 종료 핸들러
 			
 			if(DEBUG) clientMessage("<DEBUG> Herobrine has been deleted automatically.");
 			break;
+		case "HB_remove_checkDead":
+			HB_remove();
+			if(getYaw() == 0) clientMessage("Argh! I'll come back!");
+			
+			if(DEBUG) clientMessage("<DEBUG> Herobrine has been deleted automatically.");
+			break;
 		case "Check_bed":
 			if(getTile(getPlayerX(), getPlayerY(), getPlayerZ()) == 26){
 				startTimer(0.1, "Start_dream");
@@ -259,30 +265,41 @@ function HB_spawn(){ // [히로빈] 소환
 		return false;
 	}
 	
-	var time = 3;
+	var time = 3, checkPlayerDead = false;
 	
-	switch(g_spawnCount){
-		case 0:
-			clientMessage("HI!");
-			break;
-		case 4:
-			clientMessage("?mA I erehW");
-			break;
-		case 10:
-			HB_attackFire();
-			time = 5;
-			break;
-		case 20:
-			HB_attackFire();
-			clientMessage("!nileppeZ deL ot netsiL");
-			break;
+	if(g_spawnCount == 0){
+		clientMessage("HI!");
+	}else{
+		switch(getRandom(0, 10)){
+			case 0:
+				clientMessage("!enirboreH ma I");
+				break;
+			case 1:
+				clientMessage("?mA I erehW");
+				break;
+			case 2:
+				HB_attackFire(5);
+				time = 5;
+				break;
+			case 3:
+				HB_attackAir();
+				time = 4;
+				checkPlayerDead = true;
+				break;
+			case 4:
+				HB_attackFire(20);
+				clientMessage("!nileppeZ deL ot netsiL");
+				break;
+		}
 	}
 	
 	g_spawnCount++;
 	
 	g_HB = spawnPigZombie(pos[0], pos[1] + 1, pos[2], 276, "mob/char.png");
 	g_HB_health = 20;
-	startTimer(time, "HB_remove");
+	
+	if(checkPlayerDead) startTimer(time, "HB_remove_checkDead");
+	else startTimer(time, "HB_remove");
 	
 	if(DEBUG) clientMessage("<DEBUG> Herobrine has been summoned.");
 	if(DEBUG) clientMessage(" (Time " + time + ", Count " + g_spawnCount + ", X " + pos[0] + ", Y " + (pos[1] + 1) + ", Z " + pos[2] + ")");
@@ -362,13 +379,19 @@ function HB_deleteDream(){ // [히로빈] 악몽 건축물 삭제
 	if(DEBUG) clientMessage("<DEBUG> [Dream] " + count + " blocks have been removed.");
 }
 
-function HB_attackFire(){ // [히로빈] 불로 공격
-	for(var i = 0; i < 5; i++){		
+function HB_attackFire(num){ // [히로빈] 불로 공격
+	if(num === NaN) num = 5;
+	
+	for(var i = 0; i < num; i++){	
 		var pos = getFloor(getRandom(Math.floor(getPlayerX()) - 3, Math.floor(getPlayerX()) + 3), Math.floor(getPlayerY()), getRandom(Math.floor(getPlayerZ()) - 3, Math.floor(getPlayerZ()) + 3), true);
 		setTile(pos[0], pos[1] + 1, pos[2], 51);
 	}
 	
 	explode(getPlayerX(), getPlayerY(), getPlayerZ(), 0.01);
+}
+
+function HB_attackAir(){
+	setVelY(getPlayerEnt(), 2);
 }
 
 function startTimer(sec, tag){ // 타이머 설정
