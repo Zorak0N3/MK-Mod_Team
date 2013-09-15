@@ -180,10 +180,6 @@ function modTick(){ // 실시간 체크 함수
 		timerEndHandler(getTimerTag());
 	}
 	
-	if(g_bedPos.length == 3 && getTile(g_bedPos[0], g_bedPos[1], g_bedPos[2]) != 26){ // 침대 체크
-		g_bedPos = [];
-	}
-	
 	saveData();
 	
 	//////////////////////////////////////////////
