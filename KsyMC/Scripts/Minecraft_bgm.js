@@ -17,12 +17,9 @@ function leaveGame(){
 
 function modTick(){
 	var time = Level.getTime();
+	time %= 14400;
 	
-	while(time > 14400){
-		time -= 14400;
-	}
-	
-	if(sound.isPlaying()) return;
+	if(sound == null || sound.isPlaying() || parseInt(Math.random * 2) == 1) return;
 	
 	if(time >= 7200) playSound(Snd_Minecraft);
 }
