@@ -48,18 +48,18 @@ var jukebox_name = ["13", "cat", "blocks", "chirp", "far", "mall", "mellohi", "s
 function newLevel(){
 	mPlayer = new android.media.MediaPlayer();
 	
-	ModPE.setItem(422, 15, 0, "13 Disc");
-	ModPE.setItem(423, 15, 1, "cat Disc");
-	ModPE.setItem(424, 15, 2, "blocks Disc");
-	ModPE.setItem(425, 15, 3, "chirp Disc");
-	ModPE.setItem(426, 15, 4, "far Disc");
-	ModPE.setItem(427, 15, 5, "mall Disc");
-	ModPE.setItem(428, 15, 6, "mellohi Disc");
-	ModPE.setItem(429, 15, 7, "stal Disc");
-	ModPE.setItem(430, 15, 8, "strad Disc");
-	ModPE.setItem(431, 15, 9, "ward Disc");
-	ModPE.setItem(432, 15, 10, "11 Disc");
-	ModPE.setItem(433, 15, 11, "wait Disc");
+	ModPE.setItem(422, 15, 0, "13 disc");
+	ModPE.setItem(423, 15, 1, "cat disc");
+	ModPE.setItem(424, 15, 2, "blocks disc");
+	ModPE.setItem(425, 15, 3, "chirp disc");
+	ModPE.setItem(426, 15, 4, "far disc");
+	ModPE.setItem(427, 15, 5, "mall disc");
+	ModPE.setItem(428, 15, 6, "mellohi disc");
+	ModPE.setItem(429, 15, 7, "stal disc");
+	ModPE.setItem(430, 15, 8, "strad disc");
+	ModPE.setItem(431, 15, 9, "ward disc");
+	ModPE.setItem(432, 15, 10, "11 disc");
+	ModPE.setItem(433, 15, 11, "wait disc");
 }
 
 function useItem(x, y, z, item, block, side, itemdata, blockdata){
