@@ -94,6 +94,9 @@ function leaveGame(){
 			}
 		}
 	}));
+	
+	jukebox = [];
+	saveTick = -1;
 }
 
 function modTick(){
