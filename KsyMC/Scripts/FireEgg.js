@@ -1,25 +1,30 @@
-var egg = null;
+var egg = [];
+var count = 0;
 
 function newLevel(){
-	egg = null;
+	egg = [];
+	count = 0
 }
 
 function entityAddedHook(ent){
 	if(Entity.getEntityTypeId(ent) == 82){
-		egg = ent;
-		Entity.setFireTicks(egg, 20 * 100);
+		Entity.setFireTicks(ent, 20 * 100);
+		egg[count] = ent;
+		count++;
 	}
 }
 
 function entityRemovedHook(ent){
-	if(egg != null && Entity.getPitch(ent) == Entity.getPitch(egg)){
-		var pos = [];
-		for(var x = 0; x < 5; x++) for(var z = 0; z < 5; z++) pos.push(getFloor((Entity.getX(egg) - 2) + x, 127, (Entity.getZ(egg) - 2) + z));
-		
-		for(var i = 0; i < pos.length; i++) setTile(pos[i][0], pos[i][1] + 1, pos[i][2], 51);
-		
-		Entity.remove(egg);
-		egg = null;
+	if(egg.length != 0){
+		for(var i in egg){
+			if(Entity.getPitch(ent) == Entity.getPitch(egg[i])){
+				var pos = [];
+				for(var x = 0; x < 5; x++) for(var z = 0; z < 5; z++) pos.push(getFloor((Entity.getX(ent) - 2) + x, 127, (Entity.getZ(ent) - 2) + z));
+				
+				for(var i = 0; i < pos.length; i++) setTile(pos[i][0], pos[i][1] + 1, pos[i][2], 51);
+				break;
+			}
+		}
 	}
 }
 
