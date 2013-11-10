@@ -1,51 +1,46 @@
 var mPlayer = null;
 var nowplaying = null;
 var jukebox = [];
-var saveTick = -1;
 
-var sounds = ["http://hydra-media.cursecdn.com/minecraft.gamepedia.com/5/50/Minecraft.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/a/aa/Clark.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/0/00/Sweden.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/c/c7/Subwoofer_lullaby.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/2/20/Living_mice.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/c/c7/Haggstrom.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/2/2e/Danny.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/90/Key.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/97/Oxygene.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/9a/Dry_hands.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/c/ca/Wet_hands.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/99/Mice_on_venus.ogg"];
+var sdcardPath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
 
-var caves_sounds = ["http://hydra-media.cursecdn.com/minecraft.gamepedia.com/d/d3/Cave1.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/6/6d/Cave2.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/c/c7/Cave3.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/d/da/Cave4.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/3/3d/Cave5.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/4/42/Cave6.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/92/Cave7.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/f/f4/Cave8.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/f/ff/Cave9.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/0/08/Cave10.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/3/32/Cave11.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/d/d7/Cave12.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/6/6f/Cave13.ogg"];
+var sounds =
+["Minecraft.ogg",
+ "Clark.ogg",
+ "Sweden.ogg",
+ "Subwoofer_lullaby.ogg",
+ "Living_mice.ogg",
+ "Haggstrom.ogg",
+ "Danny.ogg",
+ "Key.ogg",
+ "Oxygene.ogg",
+ "Dry_hands.ogg",
+ "Wet_hands.ogg",
+ "Mice_on_venus.ogg"];
 
-var jukebox_sounds = ["http://hydra-media.cursecdn.com/minecraft.gamepedia.com/8/85/13.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/5/5c/Cat.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/7/71/Blocks.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/a/a9/Chirp.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/8/8d/Far.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/b/b8/Mall.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/9/9f/Mellohi.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/e/e7/Stal.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/b/b1/Strad.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/0/04/Ward.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/f/f9/11.ogg",
- "http://hydra-media.cursecdn.com/minecraft.gamepedia.com/4/48/Where_are_we_now.ogg"];
+var jukebox_sounds =
+["13.ogg",
+ "cat.ogg",
+ "blocks.ogg",
+ "chirp.ogg",
+ "far.ogg",
+ "mall.ogg",
+ "mellohi.ogg",
+ "stal.ogg",
+ "strad.ogg",
+ "ward.ogg",
+ "11.ogg",
+ "wait.ogg"];
 
 var jukebox_name = ["13", "cat", "blocks", "chirp", "far", "mall", "mellohi", "stal", "strad", "ward", "11", "wait"];
 
 function newLevel(){
+	// 파일 체크
+	var file = java.io.File(sdcardPath+"/games/com.mojang/minecraftResource/PC_BGM/");
+	if(file.exists() == false){
+		clientMessage("[에러] 리소스 폴더가 존재하지 않습니다.");
+	}
+	
 	mPlayer = new android.media.MediaPlayer();
 	
 	ModPE.setItem(422, 15, 0, "13 disc");
@@ -96,21 +91,17 @@ function leaveGame(){
 	}));
 	
 	jukebox = [];
-	saveTick = -1;
 }
 
 function modTick(){
 	if(nowplaying != null){
-		saveTick--;
-		if(saveTick == 0){
-			var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
-			ctx.runOnUiThread(new java.lang.Runnable({
-				run: function() {
-					nowplaying.dismiss();
-					nowplaying = null;
-				}
-			}));
-		}
+		var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+		ctx.runOnUiThread(new java.lang.Runnable({
+			run: function() {
+				nowplaying.dismiss();
+				nowplaying = null;
+			}
+		}));
 	}
 	
 	var time = Level.getTime();
@@ -155,7 +146,8 @@ function getRandomSound(type){
 	if(type == 2) return jukebox_sounds[parseInt(Math.random() * 12)];
 }
 
-function playSound(path){
+function playSound(sndname){
+	var path = sdcardPath + "/games/com.mojang/minecraftResource/PC_BGM/" + sndname;
 	try{
 		if(mPlayer.isPlaying()) mPlayer.pause();
 		
